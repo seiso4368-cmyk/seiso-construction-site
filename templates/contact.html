@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Contact Us - BuildPro Construction{% endblock %}
+{% block title %}Book a Consultation - Seiso Construction{% endblock %}
 
 {% block content %}
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Get in touch with our team for your construction project</p>
+            <h1>Book a Consultation</h1>
+            <p>Tell us about your construction project and upload plans, photos, or videos for review.</p>
         </div>
     </section>
 
@@ -17,11 +17,12 @@
             <div class="contact-wrapper">
                 <!-- Contact Information -->
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
+                    <h2>Start Your Project</h2>
+                    <p class="contact-intro">Use the consultation form to share your project goals, preferred appointment time, and any available files. Our team will review your submission and follow up to confirm the consultation.</p>
                     
                     <div class="info-item">
                         <h3>📍 Address</h3>
-                        <p>123 Construction Avenue<br>Build City, BC 12345<br>Canada</p>
+                        <p>Service area details coming soon</p>
                     </div>
 
                     <div class="info-item">
@@ -31,7 +32,7 @@
 
                     <div class="info-item">
                         <h3>📧 Email</h3>
-                        <p><a href="mailto:info@buildpro.com">info@buildpro.com</a></p>
+                        <p><a href="mailto:info@seisoconstruction.com">info@seisoconstruction.com</a></p>
                     </div>
 
                     <div class="info-item">
@@ -39,54 +40,89 @@
                         <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
                     </div>
 
-                    <div class="info-item">
-                        <h3>Follow Us</h3>
-                        <div class="social-links">
-                            <a href="#" class="social-link">Facebook</a>
-                            <a href="#" class="social-link">Twitter</a>
-                            <a href="#" class="social-link">LinkedIn</a>
-                            <a href="#" class="social-link">Instagram</a>
-                        </div>
+                    <div class="info-item upload-guidance">
+                        <h3>Accepted Files</h3>
+                        <p>Upload up to {{ max_file_count }} files. Each file may be up to {{ max_file_size_mb }} MB. Supported files include project photos, short videos, PDFs, Word documents, spreadsheets, and common plan files such as DWG or DXF.</p>
                     </div>
                 </div>
 
-                <!-- Contact Form -->
+                <!-- Consultation Booking Form -->
                 <div class="contact-form-wrapper">
-                    <h2>Send us a Message</h2>
-                    <form id="contactForm" class="contact-form">
+                    <h2>Consultation Request</h2>
+                    <form id="contactForm" class="contact-form" enctype="multipart/form-data" data-max-files="{{ max_file_count }}" data-max-file-size-mb="{{ max_file_size_mb }}">
                         <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" autocomplete="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone *</label>
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
+                            <label for="subject">Project Type *</label>
                             <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="residential">Residential Project</option>
-                                <option value="commercial">Commercial Project</option>
-                                <option value="renovation">Renovation</option>
-                                <option value="consultation">Consultation</option>
-                                <option value="other">Other</option>
+                                <option value="">Select a project type</option>
+                                <option value="Residential Construction">Residential Construction</option>
+                                <option value="Commercial Project">Commercial Project</option>
+                                <option value="Renovation / Remodel">Renovation / Remodel</option>
+                                <option value="Repairs / Maintenance">Repairs / Maintenance</option>
+                                <option value="Planning / Estimate Consultation">Planning / Estimate Consultation</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="consultation_date">Preferred Consultation Date *</label>
+                                <input type="date" id="consultation_date" name="consultation_date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="consultation_time">Preferred Time *</label>
+                                <input type="time" id="consultation_time" name="consultation_time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project_address">Project Address or Area</label>
+                            <input type="text" id="project_address" name="project_address" placeholder="Street address, city, or general project area">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project_budget">Estimated Budget</label>
+                            <select id="project_budget" name="project_budget">
+                                <option value="">Select a range if known</option>
+                                <option value="Under $10,000">Under $10,000</option>
+                                <option value="$10,000 - $50,000">$10,000 - $50,000</option>
+                                <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+                                <option value="$100,000 - $250,000">$100,000 - $250,000</option>
+                                <option value="$250,000+">$250,000+</option>
+                                <option value="Not sure yet">Not sure yet</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" required></textarea>
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Describe the project, timeline, goals, and any questions you want to discuss." required></textarea>
                         </div>
 
-                        <button type="submit" class="submit-button">Send Message</button>
+                        <div class="form-group">
+                            <label for="project_files">Upload Plans, Photos, Videos, or Documents</label>
+                            <input type="file" id="project_files" name="project_files" multiple accept=".jpg,.jpeg,.png,.gif,.webp,.heic,.pdf,.doc,.docx,.xls,.xlsx,.txt,.dwg,.dxf,.mp4,.mov,.avi,.mkv,.webm,image/*,video/*,application/pdf">
+                            <small class="form-help">Files will be attached to the consultation email. Maximum {{ max_file_count }} files, {{ max_file_size_mb }} MB each.</small>
+                            <ul id="fileList" class="selected-files" aria-live="polite"></ul>
+                        </div>
+
+                        <button type="submit" class="submit-button">Book Consultation</button>
                         <div id="formMessage" class="form-message"></div>
                     </form>
                 </div>
@@ -97,7 +133,7 @@
     <!-- Map Section (Placeholder) -->
     <section class="map-section">
         <div class="map-placeholder">
-            <p>📍 Map Location</p>
+            <p>📍 Consultation service area</p>
         </div>
     </section>
 {% endblock %}

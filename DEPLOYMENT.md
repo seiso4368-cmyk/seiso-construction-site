@@ -47,13 +47,21 @@ Create a `.env` file in the project root:
 
 ```env
 SECRET_KEY=your-secret-key-here
+MAIL_SERVER=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USE_TLS=true
+MAIL_USE_SSL=false
 MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-app-password-here
 MAIL_DEFAULT_SENDER=your-email@gmail.com
+MAIL_RECIPIENT=where-bookings-should-go@example.com
+MAX_UPLOAD_MB=25
+MAX_FILE_SIZE_MB=10
+MAX_FILE_COUNT=5
 PORT=5000
 ```
 
-**Note**: Use an [App Password](https://myaccount.google.com/apppasswords) from your Gmail account, not your regular password.
+**Note**: Use an [App Password](https://myaccount.google.com/apppasswords) from your Gmail account, not your regular password. Consultation requests can include project files as email attachments, so make sure the recipient mailbox can receive attachments up to your configured upload limits.
 
 ### 5. Run the Application
 
@@ -89,9 +97,17 @@ In your Railway project dashboard:
 
 1. Go to "Variables"
 2. Add the following variables:
-   - `MAIL_USERNAME`: your-email@gmail.com
-   - `MAIL_PASSWORD`: your-app-password
-   - `MAIL_DEFAULT_SENDER`: your-email@gmail.com
+   - `MAIL_SERVER`: SMTP host, such as `smtp.gmail.com`
+   - `MAIL_PORT`: SMTP port, usually `587`
+   - `MAIL_USE_TLS`: usually `true`
+   - `MAIL_USE_SSL`: usually `false`
+   - `MAIL_USERNAME`: sender email address or SMTP username
+   - `MAIL_PASSWORD`: sender app password or SMTP password
+   - `MAIL_DEFAULT_SENDER`: email address shown as the sender
+   - `MAIL_RECIPIENT`: email address that should receive consultation bookings and uploaded files
+   - `MAX_UPLOAD_MB`: total upload limit per booking, default `25`
+   - `MAX_FILE_SIZE_MB`: per-file upload limit, default `10`
+   - `MAX_FILE_COUNT`: number of files allowed per booking, default `5`
    - `SECRET_KEY`: your-secret-key
 
 **Important**: Do NOT commit `.env` file to GitHub. It's already in `.gitignore`.
@@ -102,11 +118,12 @@ Railway will automatically deploy when you push to the main branch.
 
 ## Troubleshooting
 
-### Email Not Sending
+### Email or Attachment Sending Issues
 
-1. Verify Gmail App Password is correct
-2. Check that "Less secure app access" is not blocking the connection
-3. Review Railway logs for error messages
+1. Verify the SMTP username and app password are correct.
+2. Confirm `MAIL_RECIPIENT` is set to the address where consultation requests should be delivered.
+3. Keep uploads within the configured attachment limits. Many email providers reject large video attachments; if that happens, reduce `MAX_UPLOAD_MB`, `MAX_FILE_SIZE_MB`, or request smaller videos.
+4. Review Railway logs for error messages.
 
 ### 404 Errors on Routes
 

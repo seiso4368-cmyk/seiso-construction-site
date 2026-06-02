@@ -890,3 +890,58 @@ body {
         font-size: 1.8rem;
     }
 }
+
+/* ==========================================
+   Consultation Booking Enhancements
+   ========================================== */
+
+.contact-intro {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.form-help {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.form-group input[type="file"] {
+    padding: 10px;
+    background-color: var(--light-bg);
+    cursor: pointer;
+}
+
+.selected-files {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.selected-files li {
+    margin-bottom: 0.35rem;
+}
+
+.upload-guidance {
+    background-color: var(--light-bg);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

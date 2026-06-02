@@ -1,47 +1,90 @@
-// Contact Form Submission
+// Consultation Booking Form Submission
+
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     const formMessage = document.getElementById('formMessage');
+    const fileInput = document.getElementById('project_files');
+    const fileList = document.getElementById('fileList');
+    const maxFiles = Number(contactForm?.dataset.maxFiles || 5);
+    const maxFileSizeMb = Number(contactForm?.dataset.maxFileSizeMb || 10);
+    const maxFileSizeBytes = maxFileSizeMb * 1024 * 1024;
+
+    if (fileInput && fileList) {
+        fileInput.addEventListener('change', function() {
+            fileList.innerHTML = '';
+
+            const files = Array.from(fileInput.files);
+            if (!files.length) {
+                return;
+            }
+
+            if (files.length > maxFiles) {
+                showMessage(`Please select no more than ${maxFiles} files.`, 'error');
+                fileInput.value = '';
+                return;
+            }
+
+            for (const file of files) {
+                if (file.size > maxFileSizeBytes) {
+                    showMessage(`"${file.name}" is too large. Each file must be ${maxFileSizeMb} MB or smaller.`, 'error');
+                    fileInput.value = '';
+                    fileList.innerHTML = '';
+                    return;
+                }
+
+                const listItem = document.createElement('li');
+                listItem.textContent = `${file.name} (${formatFileSize(file.size)})`;
+                fileList.appendChild(listItem);
+            }
+        });
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
+            const submitBtn = contactForm.querySelector('.submit-button');
+            const formData = new FormData(contactForm);
+            const requiredFields = ['name', 'email', 'phone', 'subject', 'consultation_date', 'consultation_time', 'message'];
 
-            // Validate form
-            if (!formData.name || !formData.email || !formData.message) {
-                showMessage('Please fill in all required fields', 'error');
-                return;
+            for (const field of requiredFields) {
+                if (!String(formData.get(field) || '').trim()) {
+                    showMessage('Please fill in all required fields, including consultation date and time.', 'error');
+                    return;
+                }
             }
 
             // Validate email
+            const email = String(formData.get('email') || '').trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.email)) {
-                showMessage('Please enter a valid email address', 'error');
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'error');
                 return;
+            }
+
+            const selectedFiles = fileInput ? Array.from(fileInput.files) : [];
+            if (selectedFiles.length > maxFiles) {
+                showMessage(`Please select no more than ${maxFiles} files.`, 'error');
+                return;
+            }
+
+            for (const file of selectedFiles) {
+                if (file.size > maxFileSizeBytes) {
+                    showMessage(`"${file.name}" is too large. Each file must be ${maxFileSizeMb} MB or smaller.`, 'error');
+                    return;
+                }
             }
 
             try {
                 // Disable submit button
-                const submitBtn = contactForm.querySelector('.submit-button');
                 submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
+                submitBtn.textContent = selectedFiles.length ? 'Uploading & Sending...' : 'Sending...';
+                showMessage('Sending your consultation request. Please wait until the upload finishes.', 'success');
 
-                // Send form data to server
+                // Send multipart form data to server
                 const response = await fetch('/api/contact', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
+                    body: formData
                 });
 
                 const result = await response.json();
@@ -49,17 +92,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result.success) {
                     showMessage(result.message, 'success');
                     contactForm.reset();
+                    if (fileList) {
+                        fileList.innerHTML = '';
+                    }
                 } else {
                     showMessage(result.message, 'error');
                 }
-
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-
             } catch (error) {
                 showMessage('An error occurred. Please try again later.', 'error');
                 console.error('Error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Book Consultation';
             }
         });
     }
@@ -69,12 +114,22 @@ document.addEventListener('DOMContentLoaded', function() {
             formMessage.textContent = message;
             formMessage.className = 'form-message ' + type;
             
-            // Auto-hide success message after 5 seconds
-            if (type === 'success') {
+            // Auto-hide success message after 8 seconds unless it is an in-progress status
+            if (type === 'success' && !message.toLowerCase().includes('please wait')) {
                 setTimeout(() => {
                     formMessage.className = 'form-message';
-                }, 5000);
+                }, 8000);
             }
         }
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes < 1024) {
+            return `${bytes} B`;
+        }
+        if (bytes < 1024 * 1024) {
+            return `${(bytes / 1024).toFixed(1)} KB`;
+        }
+        return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
     }
 });
