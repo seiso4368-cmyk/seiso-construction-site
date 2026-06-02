@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - BuildPro Construction{% endblock %}
+
+{% block content %}
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team for your construction project</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    
+                    <div class="info-item">
+                        <h3>📍 Address</h3>
+                        <p>123 Construction Avenue<br>Build City, BC 12345<br>Canada</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>📞 Phone</h3>
+                        <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:info@buildpro.com">info@buildpro.com</a></p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>🕐 Business Hours</h3>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link">Facebook</a>
+                            <a href="#" class="social-link">Twitter</a>
+                            <a href="#" class="social-link">LinkedIn</a>
+                            <a href="#" class="social-link">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>Send us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="residential">Residential Project</option>
+                                <option value="commercial">Commercial Project</option>
+                                <option value="renovation">Renovation</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">Send Message</button>
+                        <div id="formMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Placeholder) -->
+    <section class="map-section">
+        <div class="map-placeholder">
+            <p>📍 Map Location</p>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}
