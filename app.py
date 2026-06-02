@@ -1,12 +1,41 @@
+pasted_content.txt
+Text · 7.50 KB
+this is the entire code from app.py in github. rewrite the entire code so that i can paste it directly in github
+Got it. I’ll use the GitHub app.py content you attached and produce a complete replacement version that you can paste directly into GitHub without relying on patches or local VS Code edits.
+
+I confirmed the GitHub version of `app.py` and prepared a complete, paste-ready update with SMTP timeout diagnostics. Next, I'll guide you to deploy this version directly on GitHub.
+I rewrote the full GitHub app.py as a complete paste-ready replacement and validated the Python syntax successfully.
+Open the attached app_github_paste_ready.py, copy its entire contents, paste it into GitHub’s app.py, and commit directly to main with a message like:
+text
+
+Add SMTP timeout diagnostics for contact form
+
+After GitHub commits and Railway redeploys, tell me deployed, and I’ll rerun the live small-attachment form test.
+app_github_paste_ready.py
+Code · 9.23 KB
+View all files in this task
+Task completed
+How was this result?
+Suggested follow-ups
+
+
+app_github_paste_ready.py
+
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
 import mimetypes
 import os
+import smtplib
+import socket
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
+# Public business inbox used as a non-secret fallback for recipient/sender metadata.
+# SMTP login still requires MAIL_USERNAME and MAIL_PASSWORD in production.
+DEFAULT_CONTACT_EMAIL = os.getenv('SEISO_CONTACT_EMAIL', 'seiso4368@gmail.com')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
@@ -32,7 +61,10 @@ app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'true').lower() == 'true'
 app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL', 'false').lower() == 'true'
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER') or os.getenv('MAIL_USERNAME')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER') or os.getenv('MAIL_USERNAME') or DEFAULT_CONTACT_EMAIL
+
+# Fail fast when SMTP is unreachable instead of letting the web worker hang until Gunicorn kills it.
+app.config['MAIL_TIMEOUT'] = int(os.getenv('MAIL_TIMEOUT', '20'))
 
 mail = Mail(app)
 
@@ -124,11 +156,17 @@ def submit_contact():
                 'size_mb': len(file_bytes) / (1024 * 1024)
             })
 
-        recipient = os.getenv('MAIL_RECIPIENT') or os.getenv('MAIL_DEFAULT_SENDER') or os.getenv('MAIL_USERNAME')
+        recipient = os.getenv('MAIL_RECIPIENT') or app.config.get('MAIL_DEFAULT_SENDER') or DEFAULT_CONTACT_EMAIL
         if not recipient:
             return jsonify({
                 'success': False,
-                'message': 'Email recipient is not configured. Please set MAIL_RECIPIENT or MAIL_DEFAULT_SENDER.'
+                'message': 'Email recipient is not configured. Please set MAIL_RECIPIENT or MAIL_DEFAULT_SENDER in the Railway service Variables tab, then deploy the staged changes.'
+            }), 500
+
+        if not app.config.get('MAIL_USERNAME') or not app.config.get('MAIL_PASSWORD'):
+            return jsonify({
+                'success': False,
+                'message': 'Email SMTP login is not configured in the running Railway service. Please confirm MAIL_USERNAME and MAIL_PASSWORD are set on the production service and deploy the staged changes.'
             }), 500
 
         attachment_summary = '\n'.join(
@@ -185,17 +223,32 @@ Seiso Construction Team
 """
         )
 
-        mail.send(admin_msg)
-        mail.send(reply_msg)
+        try:
+            print(
+                f"Sending consultation booking email via {app.config.get('MAIL_SERVER')}:{app.config.get('MAIL_PORT')} "
+                f"with timeout={app.config.get('MAIL_TIMEOUT')}s, recipient={recipient}, files={len(prepared_attachments)}",
+                flush=True
+            )
+            mail.send(admin_msg)
+            mail.send(reply_msg)
+        except (smtplib.SMTPException, OSError, TimeoutError, socket.timeout) as email_error:
+            print(
+                f"SMTP error sending consultation booking email: {type(email_error).__name__}: {email_error}",
+                flush=True
+            )
+            return jsonify({
+                'success': False,
+                'message': 'We could not send your request because the email service did not respond. Please contact us directly while we finish email setup.'
+            }), 502
 
-        print(f"Consultation booking received and email sent: {name}, {email}, {phone}, files={len(prepared_attachments)}")
+        print(f"Consultation booking received and email sent: {name}, {email}, {phone}, files={len(prepared_attachments)}", flush=True)
 
         return jsonify({
             'success': True,
             'message': 'Thank you. Your consultation request and project files have been sent successfully!'
         })
     except Exception as e:
-        print(f"Error sending consultation booking email: {str(e)}")
+        print(f"Error sending consultation booking email: {str(e)}", flush=True)
         return jsonify({
             'success': False,
             'message': 'We could not send your request right now. Please try again later or contact us directly.'
@@ -213,3 +266,5 @@ def request_entity_too_large(error):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
+
+Setting Up GitHub Repository for Project Collaboration - Manus
