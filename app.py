@@ -1,26 +1,3 @@
-pasted_content.txt
-Text · 7.50 KB
-this is the entire code from app.py in github. rewrite the entire code so that i can paste it directly in github
-Got it. I’ll use the GitHub app.py content you attached and produce a complete replacement version that you can paste directly into GitHub without relying on patches or local VS Code edits.
-
-I confirmed the GitHub version of `app.py` and prepared a complete, paste-ready update with SMTP timeout diagnostics. Next, I'll guide you to deploy this version directly on GitHub.
-I rewrote the full GitHub app.py as a complete paste-ready replacement and validated the Python syntax successfully.
-Open the attached app_github_paste_ready.py, copy its entire contents, paste it into GitHub’s app.py, and commit directly to main with a message like:
-text
-
-Add SMTP timeout diagnostics for contact form
-
-After GitHub commits and Railway redeploys, tell me deployed, and I’ll rerun the live small-attachment form test.
-app_github_paste_ready.py
-Code · 9.23 KB
-View all files in this task
-Task completed
-How was this result?
-Suggested follow-ups
-
-
-app_github_paste_ready.py
-
 from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
@@ -266,5 +243,3 @@ def request_entity_too_large(error):
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
     app.run(debug=False, host='0.0.0.0', port=port)
-
-Setting Up GitHub Repository for Project Collaboration - Manus
