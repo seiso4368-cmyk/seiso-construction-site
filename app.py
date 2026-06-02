@@ -81,6 +81,11 @@ def send_resend_email(payload):
     headers = {
         'Authorization': f'Bearer {RESEND_API_KEY}',
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        # Railway reached Resend but received a 403 body of "error code: 1010".
+        # Use an explicit application User-Agent instead of urllib's default
+        # Python user agent to avoid edge/WAF rejection of generic clients.
+        'User-Agent': 'SeisoConstructionWebsite/1.0 (+https://seisoconstruction.com)',
     }
     req = urlrequest.Request(RESEND_API_URL, data=body, headers=headers, method='POST')
 
@@ -262,7 +267,7 @@ Seiso Construction Team
             print(
                 f"Sending consultation booking email via Resend HTTPS API, "
                 f"recipient={RESEND_RECIPIENT}, customer_confirmation={SEND_CUSTOMER_CONFIRMATION}, "
-                f"files={len(prepared_attachments)}, timeout={RESEND_TIMEOUT}s",
+                f"files={len(prepared_attachments)}, timeout={RESEND_TIMEOUT}s, user_agent=custom",
                 flush=True,
             )
             admin_result = send_resend_email(admin_payload)
