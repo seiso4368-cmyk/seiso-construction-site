@@ -1,26 +1,26 @@
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
-from email.message import EmailMessage
-from email.utils import parseaddr
+from urllib import request as urlrequest
+from urllib import error as urlerror
+import base64
+import html
+import json
 import mimetypes
 import os
-import smtplib
 import socket
-import ssl
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Public business inbox used as a non-secret fallback for recipient/sender metadata.
-# SMTP login still requires MAIL_USERNAME and MAIL_PASSWORD in production.
+# Public business inbox used as a non-secret fallback for recipient metadata.
 DEFAULT_CONTACT_EMAIL = os.getenv('SEISO_CONTACT_EMAIL', 'seiso4368@gmail.com')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
 
-# Upload / email attachment limits. Keep this conservative because many email
-# providers reject messages with large attachments.
+# Upload / email attachment limits. Resend allows up to 40 MB per email after
+# Base64 encoding, so this keeps form submissions safely below that ceiling.
 app.config['MAX_CONTENT_LENGTH'] = int(os.getenv('MAX_UPLOAD_MB', '25')) * 1024 * 1024
 MAX_FILE_SIZE_MB = int(os.getenv('MAX_FILE_SIZE_MB', '10'))
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
@@ -33,18 +33,24 @@ ALLOWED_EXTENSIONS = {
     'mp4', 'mov', 'avi', 'mkv', 'webm'
 }
 
-# Email configuration. This version intentionally uses direct smtplib instead
-# of Flask-Mail because the Flask-Mail version in production opens SMTP sockets
-# without passing a timeout, which allows Gmail SMTP attempts to hang until
-# Gunicorn kills the worker.
-MAIL_SERVER = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
-MAIL_PORT = int(os.getenv('MAIL_PORT', '587'))
-MAIL_USE_TLS = os.getenv('MAIL_USE_TLS', 'true').lower() == 'true'
-MAIL_USE_SSL = os.getenv('MAIL_USE_SSL', 'false').lower() == 'true'
-MAIL_USERNAME = os.getenv('MAIL_USERNAME')
-MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER') or MAIL_USERNAME or DEFAULT_CONTACT_EMAIL
-MAIL_TIMEOUT = int(os.getenv('MAIL_TIMEOUT', '20'))
+# Resend HTTPS Email API configuration. This avoids SMTP ports entirely, which
+# is important because Railway is currently unable to reach Gmail SMTP from the
+# production container.
+RESEND_API_URL = os.getenv('RESEND_API_URL', 'https://api.resend.com/emails')
+RESEND_API_KEY = os.getenv('RESEND_API_KEY')
+RESEND_FROM = os.getenv('RESEND_FROM')
+RESEND_RECIPIENT = os.getenv('RESEND_RECIPIENT') or os.getenv('MAIL_RECIPIENT') or DEFAULT_CONTACT_EMAIL
+RESEND_TIMEOUT = int(os.getenv('RESEND_TIMEOUT', os.getenv('MAIL_TIMEOUT', '20')))
+SEND_CUSTOMER_CONFIRMATION = os.getenv('SEND_CUSTOMER_CONFIRMATION', 'true').lower() == 'true'
+
+
+class ResendAPIError(Exception):
+    """Raised when Resend rejects or cannot process an email request."""
+
+    def __init__(self, message, status_code=None, response_body=None):
+        super().__init__(message)
+        self.status_code = status_code
+        self.response_body = response_body
 
 
 def allowed_file(filename):
@@ -57,59 +63,40 @@ def clean_form_value(field_name, default=''):
     return request.form.get(field_name, default).strip()
 
 
-def normalize_sender(sender_value):
-    """Return a usable email address from a sender value."""
-    parsed_name, parsed_email = parseaddr(sender_value or '')
-    return parsed_email or sender_value or DEFAULT_CONTACT_EMAIL
+def plain_to_html(text):
+    """Convert a plain-text message into simple HTML with escaped content."""
+    escaped = html.escape(text)
+    return '<div style="font-family:Arial,sans-serif;line-height:1.5;white-space:pre-wrap;">' + escaped + '</div>'
 
 
-def attach_prepared_files(email_message, prepared_attachments):
-    """Attach uploaded files to an EmailMessage."""
-    for attachment in prepared_attachments:
-        content_type = attachment['content_type'] or 'application/octet-stream'
-        if '/' in content_type:
-            maintype, subtype = content_type.split('/', 1)
-        else:
-            maintype, subtype = 'application', 'octet-stream'
+def send_resend_email(payload):
+    """Send one email through Resend using only Python standard-library HTTPS."""
+    if not RESEND_API_KEY:
+        raise ResendAPIError('RESEND_API_KEY is not configured.')
 
-        email_message.add_attachment(
-            attachment['data'],
-            maintype=maintype,
-            subtype=subtype,
-            filename=attachment['filename']
-        )
+    if not RESEND_FROM:
+        raise ResendAPIError('RESEND_FROM is not configured.')
 
-
-def send_messages_with_timeout(messages):
-    """Send all messages through SMTP with an explicit socket timeout."""
-    previous_default_timeout = socket.getdefaulttimeout()
-    socket.setdefaulttimeout(MAIL_TIMEOUT)
+    body = json.dumps(payload).encode('utf-8')
+    headers = {
+        'Authorization': f'Bearer {RESEND_API_KEY}',
+        'Content-Type': 'application/json',
+    }
+    req = urlrequest.Request(RESEND_API_URL, data=body, headers=headers, method='POST')
 
     try:
-        print(
-            f"Opening SMTP connection to {MAIL_SERVER}:{MAIL_PORT} "
-            f"ssl={MAIL_USE_SSL}, tls={MAIL_USE_TLS}, timeout={MAIL_TIMEOUT}s",
-            flush=True
-        )
-
-        if MAIL_USE_SSL:
-            smtp_context = ssl.create_default_context()
-            with smtplib.SMTP_SSL(MAIL_SERVER, MAIL_PORT, timeout=MAIL_TIMEOUT, context=smtp_context) as smtp:
-                smtp.login(MAIL_USERNAME, MAIL_PASSWORD)
-                for message in messages:
-                    smtp.send_message(message)
-        else:
-            with smtplib.SMTP(MAIL_SERVER, MAIL_PORT, timeout=MAIL_TIMEOUT) as smtp:
-                smtp.ehlo()
-                if MAIL_USE_TLS:
-                    smtp_context = ssl.create_default_context()
-                    smtp.starttls(context=smtp_context)
-                    smtp.ehlo()
-                smtp.login(MAIL_USERNAME, MAIL_PASSWORD)
-                for message in messages:
-                    smtp.send_message(message)
-    finally:
-        socket.setdefaulttimeout(previous_default_timeout)
+        with urlrequest.urlopen(req, timeout=RESEND_TIMEOUT) as response:
+            response_body = response.read().decode('utf-8', errors='replace')
+            return json.loads(response_body) if response_body else {}
+    except urlerror.HTTPError as http_error:
+        response_body = http_error.read().decode('utf-8', errors='replace')
+        raise ResendAPIError(
+            f'Resend returned HTTP {http_error.code}.',
+            status_code=http_error.code,
+            response_body=response_body,
+        ) from http_error
+    except (urlerror.URLError, TimeoutError, socket.timeout, OSError) as network_error:
+        raise ResendAPIError(f'Resend network error: {network_error}') from network_error
 
 
 # Routes
@@ -185,34 +172,33 @@ def submit_contact():
             prepared_attachments.append({
                 'filename': filename,
                 'content_type': content_type,
-                'data': file_bytes,
-                'size_mb': len(file_bytes) / (1024 * 1024)
+                'content': base64.b64encode(file_bytes).decode('ascii'),
+                'size_mb': len(file_bytes) / (1024 * 1024),
             })
 
-        recipient = os.getenv('MAIL_RECIPIENT') or MAIL_DEFAULT_SENDER or DEFAULT_CONTACT_EMAIL
-        if not recipient:
+        if not RESEND_RECIPIENT:
             return jsonify({
                 'success': False,
-                'message': 'Email recipient is not configured. Please set MAIL_RECIPIENT or MAIL_DEFAULT_SENDER in the Railway service Variables tab, then deploy the staged changes.'
+                'message': 'Email recipient is not configured. Please set RESEND_RECIPIENT or MAIL_RECIPIENT in Railway Variables, then redeploy.'
             }), 500
 
-        if not MAIL_USERNAME or not MAIL_PASSWORD:
+        if not RESEND_API_KEY:
             return jsonify({
                 'success': False,
-                'message': 'Email SMTP login is not configured in the running Railway service. Please confirm MAIL_USERNAME and MAIL_PASSWORD are set on the production service and deploy the staged changes.'
+                'message': 'Resend API key is not configured. Please set RESEND_API_KEY in Railway Variables, then redeploy.'
             }), 500
 
-        sender_email = normalize_sender(MAIL_DEFAULT_SENDER)
+        if not RESEND_FROM:
+            return jsonify({
+                'success': False,
+                'message': 'Resend sender is not configured. Please set RESEND_FROM to a verified Resend sender address, then redeploy.'
+            }), 500
+
         attachment_summary = '\n'.join(
             f"- {item['filename']} ({item['size_mb']:.2f} MB)" for item in prepared_attachments
         ) or 'No files attached.'
 
-        admin_msg = EmailMessage()
-        admin_msg['Subject'] = f'New Consultation Booking from {name}'
-        admin_msg['From'] = sender_email
-        admin_msg['To'] = recipient
-        admin_msg['Reply-To'] = email
-        admin_msg.set_content(f"""New consultation booking request:
+        admin_text = f"""New consultation booking request:
 
 Name: {name}
 Email: {email}
@@ -228,14 +214,28 @@ Project Details:
 
 Attached Files:
 {attachment_summary}
-""")
-        attach_prepared_files(admin_msg, prepared_attachments)
+"""
 
-        reply_msg = EmailMessage()
-        reply_msg['Subject'] = 'We received your consultation request - Seiso Construction'
-        reply_msg['From'] = sender_email
-        reply_msg['To'] = email
-        reply_msg.set_content(f"""Dear {name},
+        admin_payload = {
+            'from': RESEND_FROM,
+            'to': [RESEND_RECIPIENT],
+            'subject': f'New Consultation Booking from {name}',
+            'text': admin_text,
+            'html': plain_to_html(admin_text),
+            'reply_to': email,
+        }
+
+        if prepared_attachments:
+            admin_payload['attachments'] = [
+                {
+                    'filename': item['filename'],
+                    'content': item['content'],
+                    'content_type': item['content_type'],
+                }
+                for item in prepared_attachments
+            ]
+
+        customer_text = f"""Dear {name},
 
 Thank you for booking a consultation with Seiso Construction. We have received your request and will review your project details.
 
@@ -247,33 +247,49 @@ A member of our team will contact you soon to confirm the consultation.
 
 Best regards,
 Seiso Construction Team
-""")
+"""
+
+        customer_payload = {
+            'from': RESEND_FROM,
+            'to': [email],
+            'subject': 'We received your consultation request - Seiso Construction',
+            'text': customer_text,
+            'html': plain_to_html(customer_text),
+            'reply_to': RESEND_RECIPIENT,
+        }
 
         try:
             print(
-                f"Sending consultation booking email via direct SMTP {MAIL_SERVER}:{MAIL_PORT} "
-                f"with timeout={MAIL_TIMEOUT}s, recipient={recipient}, files={len(prepared_attachments)}",
-                flush=True
+                f"Sending consultation booking email via Resend HTTPS API, "
+                f"recipient={RESEND_RECIPIENT}, customer_confirmation={SEND_CUSTOMER_CONFIRMATION}, "
+                f"files={len(prepared_attachments)}, timeout={RESEND_TIMEOUT}s",
+                flush=True,
             )
-            send_messages_with_timeout([admin_msg, reply_msg])
-        except (smtplib.SMTPException, OSError, TimeoutError, socket.timeout) as email_error:
+            admin_result = send_resend_email(admin_payload)
+            print(f"Resend admin email accepted: {admin_result}", flush=True)
+
+            if SEND_CUSTOMER_CONFIRMATION:
+                customer_result = send_resend_email(customer_payload)
+                print(f"Resend customer confirmation accepted: {customer_result}", flush=True)
+        except ResendAPIError as email_error:
             print(
-                f"SMTP error sending consultation booking email: {type(email_error).__name__}: {email_error}",
-                flush=True
+                f"Resend error sending consultation booking email: {email_error}; "
+                f"status={email_error.status_code}; body={email_error.response_body}",
+                flush=True,
             )
             return jsonify({
                 'success': False,
-                'message': 'We could not send your request because the email service did not respond. Please contact us directly while we finish email setup.'
+                'message': 'We could not send your request because the email service did not accept the message. Please contact us directly while we finish email setup.'
             }), 502
 
-        print(f"Consultation booking received and email sent: {name}, {email}, {phone}, files={len(prepared_attachments)}", flush=True)
+        print(f"Consultation booking received and email sent via Resend: {name}, {email}, {phone}, files={len(prepared_attachments)}", flush=True)
 
         return jsonify({
             'success': True,
             'message': 'Thank you. Your consultation request and project files have been sent successfully!'
         })
     except Exception as e:
-        print(f"Error sending consultation booking email: {type(e).__name__}: {str(e)}", flush=True)
+        print(f"Error processing consultation booking request: {type(e).__name__}: {str(e)}", flush=True)
         return jsonify({
             'success': False,
             'message': 'We could not send your request right now. Please try again later or contact us directly.'
