@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, jsonify
-from flask_mail import Mail, Message
 from werkzeug.utils import secure_filename
+from email.message import EmailMessage
+from email.utils import parseaddr
 import mimetypes
 import os
 import smtplib
 import socket
+import ssl
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -31,19 +33,18 @@ ALLOWED_EXTENSIONS = {
     'mp4', 'mov', 'avi', 'mkv', 'webm'
 }
 
-# Email configuration
-app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
-app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', '587'))
-app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'true').lower() == 'true'
-app.config['MAIL_USE_SSL'] = os.getenv('MAIL_USE_SSL', 'false').lower() == 'true'
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER') or os.getenv('MAIL_USERNAME') or DEFAULT_CONTACT_EMAIL
-
-# Fail fast when SMTP is unreachable instead of letting the web worker hang until Gunicorn kills it.
-app.config['MAIL_TIMEOUT'] = int(os.getenv('MAIL_TIMEOUT', '20'))
-
-mail = Mail(app)
+# Email configuration. This version intentionally uses direct smtplib instead
+# of Flask-Mail because the Flask-Mail version in production opens SMTP sockets
+# without passing a timeout, which allows Gmail SMTP attempts to hang until
+# Gunicorn kills the worker.
+MAIL_SERVER = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
+MAIL_PORT = int(os.getenv('MAIL_PORT', '587'))
+MAIL_USE_TLS = os.getenv('MAIL_USE_TLS', 'true').lower() == 'true'
+MAIL_USE_SSL = os.getenv('MAIL_USE_SSL', 'false').lower() == 'true'
+MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER') or MAIL_USERNAME or DEFAULT_CONTACT_EMAIL
+MAIL_TIMEOUT = int(os.getenv('MAIL_TIMEOUT', '20'))
 
 
 def allowed_file(filename):
@@ -54,6 +55,61 @@ def allowed_file(filename):
 def clean_form_value(field_name, default=''):
     """Read and trim a form field safely."""
     return request.form.get(field_name, default).strip()
+
+
+def normalize_sender(sender_value):
+    """Return a usable email address from a sender value."""
+    parsed_name, parsed_email = parseaddr(sender_value or '')
+    return parsed_email or sender_value or DEFAULT_CONTACT_EMAIL
+
+
+def attach_prepared_files(email_message, prepared_attachments):
+    """Attach uploaded files to an EmailMessage."""
+    for attachment in prepared_attachments:
+        content_type = attachment['content_type'] or 'application/octet-stream'
+        if '/' in content_type:
+            maintype, subtype = content_type.split('/', 1)
+        else:
+            maintype, subtype = 'application', 'octet-stream'
+
+        email_message.add_attachment(
+            attachment['data'],
+            maintype=maintype,
+            subtype=subtype,
+            filename=attachment['filename']
+        )
+
+
+def send_messages_with_timeout(messages):
+    """Send all messages through SMTP with an explicit socket timeout."""
+    previous_default_timeout = socket.getdefaulttimeout()
+    socket.setdefaulttimeout(MAIL_TIMEOUT)
+
+    try:
+        print(
+            f"Opening SMTP connection to {MAIL_SERVER}:{MAIL_PORT} "
+            f"ssl={MAIL_USE_SSL}, tls={MAIL_USE_TLS}, timeout={MAIL_TIMEOUT}s",
+            flush=True
+        )
+
+        if MAIL_USE_SSL:
+            smtp_context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(MAIL_SERVER, MAIL_PORT, timeout=MAIL_TIMEOUT, context=smtp_context) as smtp:
+                smtp.login(MAIL_USERNAME, MAIL_PASSWORD)
+                for message in messages:
+                    smtp.send_message(message)
+        else:
+            with smtplib.SMTP(MAIL_SERVER, MAIL_PORT, timeout=MAIL_TIMEOUT) as smtp:
+                smtp.ehlo()
+                if MAIL_USE_TLS:
+                    smtp_context = ssl.create_default_context()
+                    smtp.starttls(context=smtp_context)
+                    smtp.ehlo()
+                smtp.login(MAIL_USERNAME, MAIL_PASSWORD)
+                for message in messages:
+                    smtp.send_message(message)
+    finally:
+        socket.setdefaulttimeout(previous_default_timeout)
 
 
 # Routes
@@ -133,29 +189,30 @@ def submit_contact():
                 'size_mb': len(file_bytes) / (1024 * 1024)
             })
 
-        recipient = os.getenv('MAIL_RECIPIENT') or app.config.get('MAIL_DEFAULT_SENDER') or DEFAULT_CONTACT_EMAIL
+        recipient = os.getenv('MAIL_RECIPIENT') or MAIL_DEFAULT_SENDER or DEFAULT_CONTACT_EMAIL
         if not recipient:
             return jsonify({
                 'success': False,
                 'message': 'Email recipient is not configured. Please set MAIL_RECIPIENT or MAIL_DEFAULT_SENDER in the Railway service Variables tab, then deploy the staged changes.'
             }), 500
 
-        if not app.config.get('MAIL_USERNAME') or not app.config.get('MAIL_PASSWORD'):
+        if not MAIL_USERNAME or not MAIL_PASSWORD:
             return jsonify({
                 'success': False,
                 'message': 'Email SMTP login is not configured in the running Railway service. Please confirm MAIL_USERNAME and MAIL_PASSWORD are set on the production service and deploy the staged changes.'
             }), 500
 
+        sender_email = normalize_sender(MAIL_DEFAULT_SENDER)
         attachment_summary = '\n'.join(
             f"- {item['filename']} ({item['size_mb']:.2f} MB)" for item in prepared_attachments
         ) or 'No files attached.'
 
-        # Send email to admin with booking details and attachments
-        admin_msg = Message(
-            subject=f'New Consultation Booking from {name}',
-            recipients=[recipient],
-            reply_to=email,
-            body=f"""New consultation booking request:
+        admin_msg = EmailMessage()
+        admin_msg['Subject'] = f'New Consultation Booking from {name}'
+        admin_msg['From'] = sender_email
+        admin_msg['To'] = recipient
+        admin_msg['Reply-To'] = email
+        admin_msg.set_content(f"""New consultation booking request:
 
 Name: {name}
 Email: {email}
@@ -171,21 +228,14 @@ Project Details:
 
 Attached Files:
 {attachment_summary}
-"""
-        )
+""")
+        attach_prepared_files(admin_msg, prepared_attachments)
 
-        for attachment in prepared_attachments:
-            admin_msg.attach(
-                filename=attachment['filename'],
-                content_type=attachment['content_type'],
-                data=attachment['data']
-            )
-
-        # Send confirmation reply to customer without attaching their uploaded files
-        reply_msg = Message(
-            subject='We received your consultation request - Seiso Construction',
-            recipients=[email],
-            body=f"""Dear {name},
+        reply_msg = EmailMessage()
+        reply_msg['Subject'] = 'We received your consultation request - Seiso Construction'
+        reply_msg['From'] = sender_email
+        reply_msg['To'] = email
+        reply_msg.set_content(f"""Dear {name},
 
 Thank you for booking a consultation with Seiso Construction. We have received your request and will review your project details.
 
@@ -197,17 +247,15 @@ A member of our team will contact you soon to confirm the consultation.
 
 Best regards,
 Seiso Construction Team
-"""
-        )
+""")
 
         try:
             print(
-                f"Sending consultation booking email via {app.config.get('MAIL_SERVER')}:{app.config.get('MAIL_PORT')} "
-                f"with timeout={app.config.get('MAIL_TIMEOUT')}s, recipient={recipient}, files={len(prepared_attachments)}",
+                f"Sending consultation booking email via direct SMTP {MAIL_SERVER}:{MAIL_PORT} "
+                f"with timeout={MAIL_TIMEOUT}s, recipient={recipient}, files={len(prepared_attachments)}",
                 flush=True
             )
-            mail.send(admin_msg)
-            mail.send(reply_msg)
+            send_messages_with_timeout([admin_msg, reply_msg])
         except (smtplib.SMTPException, OSError, TimeoutError, socket.timeout) as email_error:
             print(
                 f"SMTP error sending consultation booking email: {type(email_error).__name__}: {email_error}",
@@ -225,7 +273,7 @@ Seiso Construction Team
             'message': 'Thank you. Your consultation request and project files have been sent successfully!'
         })
     except Exception as e:
-        print(f"Error sending consultation booking email: {str(e)}", flush=True)
+        print(f"Error sending consultation booking email: {type(e).__name__}: {str(e)}", flush=True)
         return jsonify({
             'success': False,
             'message': 'We could not send your request right now. Please try again later or contact us directly.'
