@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Seiso Construction - Professional construction and property management services in Accra, Ghana. Residential, commercial, and renovation projects.">
+    <meta name="keywords" content="construction, property management, residential, commercial, renovation, Accra, Ghana">
     <title>{% block title %}Seiso Construction - Construction Excellence{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}
@@ -49,7 +51,8 @@
             <div class="footer-section footer-brand">
                 <img src="{{ url_for('static', filename='images/seiso-logo-cropped.jpeg') }}" alt="Seiso Construction & Properties Limited Company logo" class="footer-logo">
                 <h3>Seiso Construction</h3>
-                <p>Excellence in construction and project management</p>
+                <p>Excellence in construction and property management</p>
+                <p class="tagline">Built to Last</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
@@ -62,21 +65,21 @@
             </div>
             <div class="footer-section">
                 <h4>Contact Info</h4>
-                <p>Email: info@seisoconstruction.com</p>
-                <p>Phone: (555) 123-4567</p>
-                <p>Address: Service area details coming soon</p>
+                <p>Email: <a href="mailto:info@seisoconstruction.com">info@seisoconstruction.com</a></p>
+                <p>Phone: <a href="tel:+233302123456">+233 (0) 302 123 456</a></p>
+                <p>Location: Accra, Ghana</p>
             </div>
             <div class="footer-section">
                 <h4>Follow Us</h4>
                 <div class="social-links">
+                    <a href="https://www.instagram.com/seiso__construction/" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <a href="#" class="social-link">Facebook</a>
-                    <a href="#" class="social-link">Twitter</a>
                     <a href="#" class="social-link">LinkedIn</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Seiso Construction. All rights reserved.</p>
+            <p>&copy; 2026 Seiso Construction & Properties Limited. All rights reserved.</p>
         </div>
     </footer>
 

@@ -829,10 +829,45 @@ body {
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        border-top: 2px solid var(--secondary-color);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        border-radius: 0;
     }
 
     .hamburger {
         display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--secondary-color);
+        border-radius: 2px;
+        transition: var(--transition);
     }
 
     .hero-content h1 {
@@ -846,7 +881,8 @@ body {
     .features-grid,
     .services-grid,
     .process-steps,
-    .stats-grid {
+    .stats-grid,
+    .projects-grid {
         grid-template-columns: 1fr;
     }
 
@@ -875,22 +911,49 @@ body {
     .cta-section h2 {
         font-size: 1.8rem;
     }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+
+    .map-placeholder {
+        height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
     .site-logo {
-        width: 180px;
-        height: 48px;
-        padding: 3px 6px;
+        width: 160px;
+        height: 42px;
+        padding: 2px 4px;
+    }
+
+    .nav-container {
+        padding: 0 10px;
+    }
+
+    .hamburger {
+        gap: 4px;
+    }
+
+    .hamburger span {
+        width: 22px;
+        height: 2.5px;
     }
 
     .hero {
-        padding: 60px 20px;
-        min-height: 300px;
+        padding: 40px 15px;
+        min-height: 250px;
     }
 
     .hero-content h1 {
         font-size: 1.5rem;
+        line-height: 1.2;
     }
 
     .hero-content p {
@@ -898,22 +961,69 @@ body {
     }
 
     .cta-button,
-    .secondary-button {
+    .secondary-button,
+    .submit-button {
         padding: 10px 20px;
         font-size: 0.9rem;
+        width: 100%;
     }
 
     .filter-buttons {
-        gap: 0.5rem;
+        gap: 0.3rem;
+        flex-wrap: wrap;
     }
 
     .filter-btn {
-        padding: 8px 15px;
-        font-size: 0.9rem;
+        padding: 8px 12px;
+        font-size: 0.85rem;
     }
 
     .stat-card h3 {
         font-size: 1.8rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .contact-form-wrapper h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-item h3 {
+        font-size: 1rem;
+    }
+
+    .page-header {
+        padding: 40px 15px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-header p {
+        font-size: 0.9rem;
+    }
+
+    .map-placeholder {
+        height: 250px;
+    }
+
+    .selected-files {
+        font-size: 0.9rem;
+        padding-left: 1rem;
     }
 }
 
@@ -969,5 +1079,289 @@ body {
     .form-row {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+}
+
+
+/* ==========================================
+   Portfolio Preview Section (Homepage)
+   ========================================== */
+
+.portfolio-preview {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+}
+
+.portfolio-preview h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.portfolio-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.portfolio-preview-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.portfolio-preview-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.preview-image {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-bg);
+    height: 200px;
+}
+
+.portfolio-preview-item h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.portfolio-preview-item p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   Testimonials Section
+   ========================================== */
+
+.testimonials-section {
+    padding: 4rem 0;
+    background-color: var(--light-bg);
+}
+
+.testimonials-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   Consultation Benefits Section
+   ========================================== */
+
+.consultation-benefits {
+    padding: 4rem 0;
+    background-color: #f9f9f9;
+}
+
+.consultation-benefits h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.benefit-item h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-item p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   Why Choose Us Section (Services Page)
+   ========================================== */
+
+.why-choose-us {
+    padding: 4rem 0;
+    background-color: var(--light-bg);
+}
+
+.why-choose-us h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ==========================================
+   Footer Enhancements
+   ========================================== */
+
+.tagline {
+    font-style: italic;
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.footer-section a {
+    transition: var(--transition);
+}
+
+.footer-section a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   Responsive Design Updates
+   ========================================== */
+
+@media (max-width: 768px) {
+    .portfolio-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-list {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-preview h2,
+    .testimonials-section h2,
+    .consultation-benefits h2,
+    .why-choose-us h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .preview-image {
+        font-size: 2rem;
+        height: 150px;
+    }
+
+    .portfolio-preview-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-preview-item p {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+
+    .benefit-icon {
+        font-size: 2rem;
+    }
+
+    .benefit-card h3,
+    .benefit-item h3 {
+        font-size: 1.1rem;
     }
 }

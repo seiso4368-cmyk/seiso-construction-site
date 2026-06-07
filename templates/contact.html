@@ -18,16 +18,16 @@
                 <!-- Contact Information -->
                 <div class="contact-info">
                     <h2>Start Your Project</h2>
-                    <p class="contact-intro">Use the consultation form to share your project goals, preferred appointment time, and any available files. Our team will review your submission and follow up to confirm the consultation.</p>
+                    <p class="contact-intro">Use the consultation form to share your project goals, preferred appointment time, and any available files. Our team will review your submission and follow up to confirm the consultation within 24 business hours.</p>
                     
                     <div class="info-item">
                         <h3>📍 Address</h3>
-                        <p>Service area details coming soon</p>
+                        <p>Accra, Ghana<br>Service areas include Greater Accra and surrounding regions</p>
                     </div>
 
                     <div class="info-item">
                         <h3>📞 Phone</h3>
-                        <p><a href="tel:+15551234567">(555) 123-4567</a></p>
+                        <p><a href="tel:+233302123456">+233 (0) 302 123 456</a></p>
                     </div>
 
                     <div class="info-item">
@@ -37,7 +37,12 @@
 
                     <div class="info-item">
                         <h3>🕐 Business Hours</h3>
-                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>📱 Emergency Support</h3>
+                        <p>For urgent matters, contact our emergency line during business hours or leave a message for immediate callback.</p>
                     </div>
 
                     <div class="info-item upload-guidance">
@@ -52,18 +57,18 @@
                     <form id="contactForm" class="contact-form" enctype="multipart/form-data" data-max-files="{{ max_file_count }}" data-max-file-size-mb="{{ max_file_size_mb }}">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
+                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" autocomplete="email" required>
+                                <input type="email" id="email" name="email" autocomplete="email" placeholder="your.email@example.com" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Phone *</label>
-                                <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+                                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+233 (0) XXX XXX XXX" required>
                             </div>
                         </div>
 
@@ -74,6 +79,7 @@
                                 <option value="Residential Construction">Residential Construction</option>
                                 <option value="Commercial Project">Commercial Project</option>
                                 <option value="Renovation / Remodel">Renovation / Remodel</option>
+                                <option value="Property Management">Property Management</option>
                                 <option value="Repairs / Maintenance">Repairs / Maintenance</option>
                                 <option value="Planning / Estimate Consultation">Planning / Estimate Consultation</option>
                                 <option value="Other">Other</option>
@@ -101,18 +107,18 @@
                             <label for="project_budget">Estimated Budget</label>
                             <select id="project_budget" name="project_budget">
                                 <option value="">Select a range if known</option>
-                                <option value="Under $10,000">Under $10,000</option>
-                                <option value="$10,000 - $50,000">$10,000 - $50,000</option>
-                                <option value="$50,000 - $100,000">$50,000 - $100,000</option>
-                                <option value="$100,000 - $250,000">$100,000 - $250,000</option>
-                                <option value="$250,000+">$250,000+</option>
+                                <option value="Under GHS 50,000">Under GHS 50,000</option>
+                                <option value="GHS 50,000 - 200,000">GHS 50,000 - 200,000</option>
+                                <option value="GHS 200,000 - 500,000">GHS 200,000 - 500,000</option>
+                                <option value="GHS 500,000 - 1,000,000">GHS 500,000 - 1,000,000</option>
+                                <option value="GHS 1,000,000+">GHS 1,000,000+</option>
                                 <option value="Not sure yet">Not sure yet</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Describe the project, timeline, goals, and any questions you want to discuss." required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="Describe the project, timeline, goals, scope, and any specific questions you want to discuss." required></textarea>
                         </div>
 
                         <div class="form-group">
@@ -130,10 +136,35 @@
         </div>
     </section>
 
+    <!-- Why Consult With Us Section -->
+    <section class="consultation-benefits">
+        <div class="container">
+            <h2>Why Consult With Seiso Construction?</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>Expert Assessment</h3>
+                    <p>Our experienced team provides professional evaluation of your project scope, feasibility, and requirements.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Accurate Estimates</h3>
+                    <p>Receive detailed cost and timeline estimates based on comprehensive project analysis.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Strategic Planning</h3>
+                    <p>Develop a clear roadmap for your project with professional guidance and recommendations.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Risk Mitigation</h3>
+                    <p>Identify potential challenges early and develop strategies to minimize risks and delays.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Map Section (Placeholder) -->
     <section class="map-section">
         <div class="map-placeholder">
-            <p>📍 Consultation service area</p>
+            <p>📍 Consultation service area: Greater Accra, Ghana</p>
         </div>
     </section>
 {% endblock %}
