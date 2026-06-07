@@ -12,7 +12,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="/">Seiso Construction</a>
+                <a href="/" aria-label="Seiso Construction home">
+                    <img src="{{ url_for('static', filename='images/seiso-logo-cropped.jpeg') }}" alt="Seiso Construction & Properties Limited Company logo" class="site-logo">
+                </a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -44,7 +46,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-section">
+            <div class="footer-section footer-brand">
+                <img src="{{ url_for('static', filename='images/seiso-logo-cropped.jpeg') }}" alt="Seiso Construction & Properties Limited Company logo" class="footer-logo">
                 <h3>Seiso Construction</h3>
                 <p>Excellence in construction and project management</p>
             </div>

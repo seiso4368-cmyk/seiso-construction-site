@@ -3,14 +3,15 @@
    ========================================== */
 
 :root {
-    --primary-color: #1e3a8a;
-    --secondary-color: #f97316;
-    --accent-color: #64748b;
-    --light-bg: #f8fafc;
-    --dark-bg: #0f172a;
-    --text-dark: #1e293b;
-    --text-light: #64748b;
-    --border-color: #e2e8f0;
+    --primary-color: #050505;
+    --secondary-color: #facc15;
+    --secondary-dark: #eab308;
+    --accent-color: #525252;
+    --light-bg: #fff8d6;
+    --dark-bg: #111111;
+    --text-dark: #171717;
+    --text-light: #4b5563;
+    --border-color: #f1d24b;
     --success-color: #22c55e;
     --error-color: #ef4444;
     --transition: all 0.3s ease;
@@ -46,11 +47,11 @@ body {
 .navbar {
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 14px rgba(250, 204, 21, 0.16);
 }
 
 .nav-container {
@@ -63,12 +64,20 @@ body {
 }
 
 .nav-logo a {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
+    color: var(--secondary-color);
     text-decoration: none;
     display: flex;
     align-items: center;
+}
+
+.site-logo {
+    width: 240px;
+    height: 62px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid rgba(250, 204, 21, 0.7);
+    background: #000000;
+    padding: 4px 8px;
 }
 
 .nav-menu {
@@ -89,7 +98,7 @@ body {
 .nav-link:hover,
 .nav-link.active {
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--primary-color);
 }
 
 .hamburger {
@@ -111,7 +120,7 @@ body {
    ========================================== */
 
 .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #000000 0%, var(--dark-bg) 62%, #3f3300 100%);
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -125,6 +134,7 @@ body {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
+    color: var(--secondary-color);
 }
 
 .hero-content p {
@@ -153,13 +163,13 @@ body {
 
 .cta-button {
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--primary-color);
 }
 
 .cta-button:hover {
-    background-color: #ea580c;
+    background-color: var(--secondary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 5px 15px rgba(250, 204, 21, 0.35);
 }
 
 .secondary-button {
@@ -168,18 +178,18 @@ body {
 }
 
 .secondary-button:hover {
-    background-color: #1e3a8a;
+    background-color: #2a2a2a;
     transform: translateY(-2px);
 }
 
 .submit-button {
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--primary-color);
     width: 100%;
 }
 
 .submit-button:hover {
-    background-color: #ea580c;
+    background-color: var(--secondary-dark);
 }
 
 .submit-button:disabled {
@@ -262,7 +272,7 @@ body {
 }
 
 .service-item {
-    background: linear-gradient(135deg, var(--primary-color), #1e40af);
+    background: linear-gradient(135deg, #050505 0%, #1a1a1a 72%, #4a3b00 100%);
     color: white;
     padding: 2.5rem;
     border-radius: 8px;
@@ -271,7 +281,7 @@ body {
 
 .service-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+    box-shadow: 0 10px 30px rgba(250, 204, 21, 0.28);
 }
 
 .service-item h3 {
@@ -293,7 +303,7 @@ body {
    ========================================== */
 
 .page-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #000000 0%, var(--dark-bg) 62%, #3f3300 100%);
     color: white;
     padding: 60px 20px;
     text-align: center;
@@ -374,7 +384,7 @@ body {
 .placeholder-image {
     width: 100%;
     aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--light-bg), #e2e8f0);
+    background: linear-gradient(135deg, #fff8d6, #facc15);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -418,7 +428,7 @@ body {
     width: 50px;
     height: 50px;
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--primary-color);
     border-radius: 50%;
     line-height: 50px;
     font-size: 1.5rem;
@@ -467,7 +477,7 @@ body {
 .filter-btn:hover,
 .filter-btn.active {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--secondary-color);
 }
 
 .portfolio-grid {
@@ -522,8 +532,8 @@ body {
 }
 
 .project-category {
-    color: var(--secondary-color);
-    font-weight: 600;
+    color: #8a6500;
+    font-weight: 700;
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }
@@ -548,7 +558,7 @@ body {
    ========================================== */
 
 .stats-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+    background: linear-gradient(135deg, #000000 0%, var(--dark-bg) 62%, #3f3300 100%);
     color: white;
     padding: 80px 20px;
 }
@@ -632,9 +642,10 @@ body {
 }
 
 .info-item a {
-    color: var(--secondary-color);
+    color: #8a6500;
     text-decoration: none;
     transition: var(--transition);
+    font-weight: 600;
 }
 
 .info-item a:hover {
@@ -660,6 +671,7 @@ body {
 
 .social-link:hover {
     background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 /* ==========================================
@@ -698,7 +710,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.18);
 }
 
 .form-message {
@@ -733,7 +745,7 @@ body {
 .map-placeholder {
     width: 100%;
     height: 400px;
-    background: linear-gradient(135deg, var(--light-bg), #e2e8f0);
+    background: linear-gradient(135deg, #fff8d6, #facc15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -765,6 +777,18 @@ body {
 .footer-section h4 {
     margin-bottom: 1rem;
     color: var(--secondary-color);
+}
+
+.footer-logo {
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 2px solid rgba(250, 204, 21, 0.65);
+    background: #000000;
+    padding: 6px;
 }
 
 .footer-section p {
@@ -854,8 +878,10 @@ body {
 }
 
 @media (max-width: 480px) {
-    .nav-logo a {
-        font-size: 1.3rem;
+    .site-logo {
+        width: 180px;
+        height: 48px;
+        padding: 3px 6px;
     }
 
     .hero {
