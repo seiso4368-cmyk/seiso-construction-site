@@ -1365,3 +1365,94 @@ body {
         font-size: 1.1rem;
     }
 }
+
+/* ==========================================
+   Agent Sign Up Section
+   ========================================== */
+
+.agent-signup-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--secondary-color) 100%);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.agent-signup-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.agent-signup-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.agent-signup-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.agent-signup-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.agent-signup-form label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.agent-signup-form input[type="text"],
+.agent-signup-form input[type="email"],
+.agent-signup-form input[type="tel"],
+.agent-signup-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease;
+}
+
+.agent-signup-form input[type="text"]:focus,
+.agent-signup-form input[type="email"]:focus,
+.agent-signup-form input[type="tel"]:focus,
+.agent-signup-form select:focus {
+    border-color: var(--secondary-dark);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.2);
+}
+
+.agent-signup-form .submit-button {
+    width: auto;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.agent-signup-form .submit-button:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.agent-signup-form .form-message {
+    margin-top: 1rem;
+    font-weight: 500;
+}

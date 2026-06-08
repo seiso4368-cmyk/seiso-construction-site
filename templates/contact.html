@@ -161,10 +161,40 @@
         </div>
     </section>
 
-    <!-- Map Section (Placeholder) -->
-    <section class="map-section">
-        <div class="map-placeholder">
-            <p>📍 Consultation service area: Greater Accra, Ghana</p>
+    <!-- Agent Sign Up Section -->
+    <section class="agent-signup-section">
+        <div class="container">
+            <h2>Become a Seiso Agent</h2>
+            <p>Join our team of agents and help us build dreams across Ghana. Fill out the form below to express your interest.</p>
+            <form id="agentSignupForm" class="agent-signup-form">
+                <div class="form-group">
+                    <label for="agent_name">Full Name *</label>
+                    <input type="text" id="agent_name" name="agent_name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="agent_gender">Gender *</label>
+                    <select id="agent_gender" name="agent_gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="agent_address">Residential Address *</label>
+                    <input type="text" id="agent_address" name="agent_address" placeholder="Your residential address" required>
+                </div>
+                <div class="form-group">
+                    <label for="agent_phone">Telephone Number *</label>
+                    <input type="tel" id="agent_phone" name="agent_phone" placeholder="+233 (0) XXX XXX XXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="agent_email">Email (Optional)</label>
+                    <input type="email" id="agent_email" name="agent_email" placeholder="your.email@example.com">
+                </div>
+                <button type="submit" class="submit-button">Sign Up as Agent</button>
+                <div id="agentFormMessage" class="form-message"></div>
+            </form>
         </div>
     </section>
 {% endblock %}
