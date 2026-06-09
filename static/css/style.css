@@ -352,10 +352,41 @@ body {
    ========================================== */
 
 .page-header {
-    background: linear-gradient(135deg, #000000 0%, var(--dark-bg) 62%, #3f3300 100%);
+    position: relative;
     color: white;
     padding: 60px 20px;
     text-align: center;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: slideshow 16s infinite;
+    z-index: 1;
+}
+
+.page-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(17, 17, 17, 0.6) 62%, rgba(63, 51, 0, 0.6) 100%);
+    z-index: 2;
+}
+
+.page-header .container {
+    position: relative;
+    z-index: 3;
 }
 
 .page-header h1 {
