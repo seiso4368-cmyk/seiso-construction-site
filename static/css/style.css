@@ -1228,6 +1228,14 @@ body {
     justify-content: center;
     background: var(--light-bg);
     height: 200px;
+    overflow: hidden;
+}
+
+.preview-project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .portfolio-preview-item h3 {
