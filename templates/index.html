@@ -72,17 +72,23 @@
             <p class="section-subtitle">Explore some of our recent successful projects</p>
             <div class="portfolio-preview-grid">
                 <div class="portfolio-preview-item">
-                    <div class="preview-image"><img src="/static/images/apartment.jpeg" alt="Contemporary Family Residence" class="preview-project-image"></div>
+                    <a href="{{ url_for('static', filename='images/services/consulting-1.webp') }}" class="gallery-link" data-lightbox="featured-projects" data-title="Contemporary Family Residence">
+                        <div class="preview-image"><img src="{{ url_for('static', filename='images/services/consulting-1.webp') }}" alt="Contemporary Family Residence" class="preview-project-image"></div>
+                    </a>
                     <h3>Contemporary Family Residence</h3>
                     <p>Custom 5-bedroom home with modern architecture and sustainable features</p>
                 </div>
                 <div class="portfolio-preview-item">
-                    <div class="preview-image"><img src="/static/images/storeybuilding.jpeg" alt="Downtown Office Complex" class="preview-project-image"></div>
+                    <a href="{{ url_for('static', filename='images/services/consulting-2.jpeg') }}" class="gallery-link" data-lightbox="featured-projects" data-title="Downtown Office Complex">
+                        <div class="preview-image"><img src="{{ url_for('static', filename='images/services/consulting-2.jpeg') }}" alt="Downtown Office Complex" class="preview-project-image"></div>
+                    </a>
                     <h3>Downtown Office Complex</h3>
                     <p>12-story office building with eco-friendly design and modern amenities</p>
                 </div>
                 <div class="portfolio-preview-item">
-                    <div class="preview-image"><img src="/static/images/kitchen.jpeg" alt="Premium Renovations" class="preview-project-image"></div>
+                    <a href="{{ url_for('static', filename='images/services/consulting-3.jpeg') }}" class="gallery-link" data-lightbox="featured-projects" data-title="Premium Renovations">
+                        <div class="preview-image"><img src="{{ url_for('static', filename='images/services/consulting-3.jpeg') }}" alt="Premium Renovations" class="preview-project-image"></div>
+                    </a>
                     <h3>Premium Renovations</h3>
                     <p>Kitchen and bathroom renovations with premium finishes and modern design</p>
                 </div>

@@ -111,8 +111,18 @@
                         <li>Regulatory compliance and permitting guidance</li>
                     </ul>
                 </div>
-                <div class="service-detail-image">
-                    <div class="placeholder-image">📐</div>
+                <div class="service-detail-image consulting-gallery">
+                    <div class="gallery-grid">
+                        <a href="{{ url_for('static', filename='images/services/consulting-1.webp') }}" class="gallery-link" data-lightbox="consulting-gallery" data-title="Modern Architectural Design">
+                            <img src="{{ url_for('static', filename='images/services/consulting-1.webp') }}" alt="Modern architectural design with pool and contemporary home" class="gallery-image">
+                        </a>
+                        <a href="{{ url_for('static', filename='images/services/consulting-2.jpeg') }}" class="gallery-link" data-lightbox="consulting-gallery" data-title="Modern Home Exterior with Floor Plan">
+                            <img src="{{ url_for('static', filename='images/services/consulting-2.jpeg') }}" alt="Modern home exterior with floor plan" class="gallery-image">
+                        </a>
+                        <a href="{{ url_for('static', filename='images/services/consulting-3.jpeg') }}" class="gallery-link" data-lightbox="consulting-gallery" data-title="Contemporary Home Design">
+                            <img src="{{ url_for('static', filename='images/services/consulting-3.jpeg') }}" alt="Contemporary home design with floor layout" class="gallery-image">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
