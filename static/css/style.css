@@ -1818,3 +1818,44 @@ body {
         font-size: 0.9rem;
     }
 }
+
+
+/* ==========================================
+   Benefit Image Styling
+   ========================================== */
+
+.benefit-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+.benefit-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.proven-experience-card:hover .benefit-img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .benefit-image {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefit-image {
+        height: 120px;
+    }
+}
