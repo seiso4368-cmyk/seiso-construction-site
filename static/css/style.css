@@ -1918,3 +1918,19 @@ body {
         height: 120px;
     }
 }
+
+
+/* ==========================================
+   Preview Image Wrapper
+   ========================================== */
+
+.preview-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.preview-image-wrapper a {
+    display: block;
+    width: 100%;
+}
+
