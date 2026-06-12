@@ -5,6 +5,12 @@
 {% block content %}
     <!-- Page Header -->
     <section class="page-header">
+        <div class="hero-slideshow">
+            <img src="{{ url_for("static", filename="images/hero-1.jpeg") }}" alt="Hero Image 1" class="active">
+            <img src="{{ url_for("static", filename="images/hero-2.jpeg") }}" alt="Hero Image 2">
+            <img src="{{ url_for("static", filename="images/hero-3.jpeg") }}" alt="Hero Image 3">
+            <img src="{{ url_for("static", filename="images/hero-4.webp") }}" alt="Hero Image 4">
+        </div>
         <div class="container">
             <h1>Our Portfolio</h1>
             <p>Showcasing our completed projects and success stories</p>
