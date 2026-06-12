@@ -138,12 +138,31 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/static/images/hero-1.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: slideshow 16s infinite;
     z-index: 1;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slideshow img.active {
+    opacity: 1;
 }
 
 .hero::after {
@@ -175,23 +194,7 @@ body {
     opacity: 0.95;
 }
 
-@keyframes slideshow {
-    0% {
-        background-image: url('/static/images/hero-1.jpeg');
-    }
-    25% {
-        background-image: url('/static/images/hero-2.jpeg');
-    }
-    50% {
-        background-image: url('/static/images/hero-3.jpeg');
-    }
-    75% {
-        background-image: url('/static/images/hero-4.webp');
-    }
-    100% {
-        background-image: url('/static/images/hero-1.jpeg');
-    }
-}
+/* Slideshow animation removed in favor of JS */
 
 /* ==========================================
    Buttons & CTAs

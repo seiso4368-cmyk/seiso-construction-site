@@ -5,6 +5,12 @@
 {% block content %}
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-slideshow">
+            <img src="{{ url_for("static", filename="images/hero-1.jpeg") }}" alt="Hero Image 1" class="active">
+            <img src="{{ url_for("static", filename="images/hero-2.jpeg") }}" alt="Hero Image 2">
+            <img src="{{ url_for("static", filename="images/hero-3.jpeg") }}" alt="Hero Image 3">
+            <img src="{{ url_for("static", filename="images/hero-4.webp") }}" alt="Hero Image 4">
+        </div>
         <div class="hero-content">
             <h1>Building Your Dreams</h1>
             <p>Professional construction and property management services, in Ghana</p>
