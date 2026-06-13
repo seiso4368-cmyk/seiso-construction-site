@@ -374,6 +374,7 @@ body {
     padding: 60px 20px;
     text-align: center;
     overflow: hidden;
+    min-height: 300px;
 }
 
 .page-header .hero-slideshow {
