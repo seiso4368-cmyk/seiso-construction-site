@@ -220,5 +220,6 @@
 {% endblock %}
 
 {% block extra_js %}
+{{ super() }}
 <script src="{{ url_for('static', filename='js/portfolio.js') }}"></script>
 {% endblock %}
