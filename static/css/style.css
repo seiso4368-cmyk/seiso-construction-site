@@ -724,13 +724,24 @@ body {
 /* Portfolio Gallery Styles */
 .portfolio-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin: 0;
     padding: 0;
     border-top: none;
     width: 100%;
-    auto-rows: 120px;
+}
+
+@media (max-width: 768px) {
+    .portfolio-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .gallery-thumbnail {
@@ -740,6 +751,7 @@ body {
     cursor: pointer;
     transition: var(--transition);
     border: 2px solid transparent;
+    aspect-ratio: 1;
 }
 
 .gallery-thumbnail img {
