@@ -724,12 +724,18 @@ body {
 /* Portfolio Gallery Styles */
 .portfolio-gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin: 0;
     padding: 0;
     border-top: none;
     width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .portfolio-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    const galleryLinks = document.querySelectorAll('.gallery-link');
+    const galleryLinks = document.querySelectorAll('.gallery-link, .gallery-thumbnail');
     
     // Create lightbox modal
     const lightbox = createLightbox();
