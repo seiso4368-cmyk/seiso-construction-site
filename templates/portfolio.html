@@ -300,14 +300,27 @@
                 <!-- Commercial Project 1 -->
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
-                        <a href="/static/images/71.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 1">
-                            <img src="/static/images/71.jpeg" alt="Modern Office Complex - Image 1" class="portfolio-image-img">
-                        </a>
-                        <a href="/static/images/72.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 2" style="display:none;"></a>
-                        <a href="/static/images/73.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 3" style="display:none;"></a>
-                        <a href="/static/images/74.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 4" style="display:none;"></a>
-                        <a href="/static/images/75.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 5" style="display:none;"></a>
-                        <a href="/static/images/76.jpeg" data-lightbox="modern-office-gallery" data-title="Modern Office Complex - Image 6" style="display:none;"></a>
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images/71.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/71.jpeg') }}" alt="Modern Office Complex - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images/72.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/72.jpeg') }}" alt="Modern Office Complex - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images/73.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/73.jpeg') }}" alt="Modern Office Complex - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images/74.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/74.jpeg') }}" alt="Modern Office Complex - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images/75.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/75.jpeg') }}" alt="Modern Office Complex - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images/76.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images/76.jpeg') }}" alt="Modern Office Complex - Image 6">
+                            </a>
+                        </div>
                     </div>
                     <div class="portfolio-info">
                         <h3>Modern Office Complex</h3>
