@@ -7,7 +7,9 @@
     <meta name="keywords" content="construction, property management, residential, commercial, renovation, Accra, Ghana">
     <title>{% block title %}Seiso Construction - Construction Excellence{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    {% block extra_css %}{% endblock %}
+    {% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for("static", filename="css/back-to-top.css") }}">
+    {% endblock %}
 </head>
 <body>
     <!-- Navigation -->
@@ -43,6 +45,11 @@
     <!-- Main Content -->
     <main>
         {% block content %}{% endblock %}
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="back-to-top" title="Go to top">
+        <i class="arrow-up"></i>
+    </button>
     </main>
 
     <!-- Footer -->
@@ -88,6 +95,7 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/lightbox.js') }}"></script>
     {% block extra_js %}
+    <script src="{{ url_for("static", filename="js/back-to-top.js") }}"></script>
     <script src="{{ url_for("static", filename="js/slideshow.js") }}"></script>
 {% endblock %} 
 </body>
