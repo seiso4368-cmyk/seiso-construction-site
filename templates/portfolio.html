@@ -6,10 +6,10 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="hero-slideshow">
-            <img src="{{ url_for("static", filename="images_compressed/hero-1.jpeg") }}" loading="lazy" alt="Hero Image 1" class="active">
-            <img src="{{ url_for("static", filename="images_compressed/hero-2.jpeg") }}" loading="lazy" alt="Hero Image 2">
-            <img src="{{ url_for("static", filename="images_compressed/hero-3.jpeg") }}" loading="lazy" alt="Hero Image 3">
-            <img src="{{ url_for("static", filename="images_compressed/hero-4.webp") }}" loading="lazy" alt="Hero Image 4">
+            <img src="{{ url_for("static", filename="images_thumbnails/hero-1.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/hero-1.jpeg") }}" loading="lazy" alt="Hero Image 1" class="active">
+            <img src="{{ url_for("static", filename="images_thumbnails/hero-2.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/hero-2.jpeg") }}" loading="lazy" alt="Hero Image 2">
+            <img src="{{ url_for("static", filename="images_thumbnails/hero-3.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/hero-3.jpeg") }}" loading="lazy" alt="Hero Image 3">
+            <img src="{{ url_for("static", filename="images_thumbnails/hero-4.webp") }}" data-src="{{ url_for("static", filename="images_optimized/hero-4.webp") }}" loading="lazy" alt="Hero Image 4">
         </div>
         <div class="container">
             <h1>Our Portfolio</h1>
@@ -38,20 +38,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/28.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/28.jpeg') }}" loading="lazy" alt="2-Bedroom Modern Home Exterior">
+                            <a href="{{ url_for('static', filename='images_optimized/28.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/28.jpeg') }}" loading="lazy" alt="2-Bedroom Modern Home Exterior">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/29.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/29.jpeg') }}" loading="lazy" alt="2-Bedroom Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/29.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/29.jpeg') }}" loading="lazy" alt="2-Bedroom Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/30.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/30.jpeg') }}" loading="lazy" alt="2-Bedroom Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/30.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/30.jpeg') }}" loading="lazy" alt="2-Bedroom Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/31.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/31.jpeg') }}" loading="lazy" alt="2-Bedroom Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/31.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/31.jpeg') }}" loading="lazy" alt="2-Bedroom Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/32.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/32.jpeg') }}" loading="lazy" alt="2-Bedroom Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/32.jpeg') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/32.jpeg') }}" loading="lazy" alt="2-Bedroom Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -70,20 +70,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/33.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/33.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/33.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/33.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/34.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/34.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/34.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/34.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/35.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/35.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/35.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/35.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/36.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/36.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/36.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/36.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/37.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/37.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/37.jpeg') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/37.jpeg') }}" loading="lazy" alt="2-Bedroom Two Storey Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -102,20 +102,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/38.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/38.jpeg') }}" loading="lazy" alt="3-Bedroom Modern Home Exterior">
+                            <a href="{{ url_for('static', filename='images_optimized/38.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/38.jpeg') }}" loading="lazy" alt="3-Bedroom Modern Home Exterior">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/39.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/39.jpeg') }}" loading="lazy" alt="3-Bedroom Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/39.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/39.jpeg') }}" loading="lazy" alt="3-Bedroom Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/40.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/40.jpeg') }}" loading="lazy" alt="3-Bedroom Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/40.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/40.jpeg') }}" loading="lazy" alt="3-Bedroom Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/41.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/41.jpeg') }}" loading="lazy" alt="3-Bedroom Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/41.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/41.jpeg') }}" loading="lazy" alt="3-Bedroom Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/42.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/42.jpeg') }}" loading="lazy" alt="3-Bedroom Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/42.jpeg') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/42.jpeg') }}" loading="lazy" alt="3-Bedroom Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -134,20 +134,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/43.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/43.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/43.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/43.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/44.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/44.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/44.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/44.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/45.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/45.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/45.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/45.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/46.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/46.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/46.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/46.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/47.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/47.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/47.jpeg') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/47.jpeg') }}" loading="lazy" alt="3-Bedroom Two Storey Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -166,20 +166,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/48.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/48.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/48.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/48.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/49.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/49.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/49.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/49.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/50.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/50.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/50.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/50.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/51.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/51.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/51.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/51.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/52.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/52.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/52.jpeg') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/52.jpeg') }}" loading="lazy" alt="4-Bedroom One Storey Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -198,20 +198,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/53.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/53.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/53.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/53.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/54.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/54.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/54.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/54.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/55.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/55.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/55.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/55.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/56.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/56.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/56.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/56.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/57.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/57.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/57.jpeg') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/57.jpeg') }}" loading="lazy" alt="4-Bedroom Two Storey Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -230,20 +230,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/58.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/58.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/58.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/58.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/59.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/59.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/59.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/59.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/60.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/60.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/60.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/60.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/61.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/61.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/61.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/61.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/62.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/62.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/62.jpeg') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/62.jpeg') }}" loading="lazy" alt="5-Bedroom One Storey Elegant Home">
                             </a>
                         </div>
                     </div>
@@ -262,29 +262,29 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/63.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/63.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Modern Home">
+                            <a href="{{ url_for('static', filename='images_optimized/63.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/63.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Modern Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/64.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/64.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Contemporary Home">
+                            <a href="{{ url_for('static', filename='images_optimized/64.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/64.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Contemporary Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/65.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/65.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Luxury Home">
+                            <a href="{{ url_for('static', filename='images_optimized/65.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/65.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Luxury Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/66.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/66.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Minimalist Home">
+                            <a href="{{ url_for('static', filename='images_optimized/66.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/66.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Minimalist Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/67.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/67.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Elegant Home">
+                            <a href="{{ url_for('static', filename='images_optimized/67.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/67.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Elegant Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/68.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/68.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Premium Home">
+                            <a href="{{ url_for('static', filename='images_optimized/68.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/68.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Premium Home">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/69.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/69.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Luxury Design">
+                            <a href="{{ url_for('static', filename='images_optimized/69.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/69.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Luxury Design">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/70.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/70.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Classic Home">
+                            <a href="{{ url_for('static', filename='images_optimized/70.jpeg') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/70.jpeg') }}" loading="lazy" alt="5-Bedroom Two Storey Classic Home">
                             </a>
                         </div>
                     </div>
@@ -302,23 +302,23 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/71.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/71.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/71.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/71.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/72.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/72.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/72.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/72.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/73.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/73.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/73.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/73.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/74.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/74.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/74.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/74.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/75.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/75.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/75.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/75.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 5">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/76.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/76.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/76.jpeg') }}" data-lightbox="modern-office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/76.jpeg') }}" loading="lazy" alt="Modern Office Complex - Image 6">
                             </a>
                         </div>
                     </div>
@@ -337,29 +337,29 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/77.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/77.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/77.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/77.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/78.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/78.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/78.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/78.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/79.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/79.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/79.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/79.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/80.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/80.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/80.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/80.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/81.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/81.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/81.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/81.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 5">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/82.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/82.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/82.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/82.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 6">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/83.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/83.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 7">
+                            <a href="{{ url_for('static', filename='images_optimized/83.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/83.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 7">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/84.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/84.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 8">
+                            <a href="{{ url_for('static', filename='images_optimized/84.jpeg') }}" data-lightbox="retail-mall-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/84.jpeg') }}" loading="lazy" alt="Retail Shopping Mall - Image 8">
                             </a>
                         </div>
                     </div>
@@ -377,20 +377,20 @@
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery" data-lightbox="warehouse-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/85.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 1">
-                                <img src="{{ url_for('static', filename='images_compressed/85.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/85.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 1">
+                                <img src="{{ url_for('static', filename='images_optimized/85.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/86.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 2">
-                                <img src="{{ url_for('static', filename='images_compressed/86.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/86.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 2">
+                                <img src="{{ url_for('static', filename='images_optimized/86.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/87.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 3">
-                                <img src="{{ url_for('static', filename='images_compressed/87.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/87.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 3">
+                                <img src="{{ url_for('static', filename='images_optimized/87.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/88.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 4">
-                                <img src="{{ url_for('static', filename='images_compressed/88.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/88.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 4">
+                                <img src="{{ url_for('static', filename='images_optimized/88.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/89.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 5">
-                                <img src="{{ url_for('static', filename='images_compressed/89.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/89.jpeg') }}" class="gallery-thumbnail" data-lightbox="warehouse-gallery" title="Industrial Warehouse Complex - Image 5">
+                                <img src="{{ url_for('static', filename='images_optimized/89.jpeg') }}" loading="lazy" alt="Industrial Warehouse Complex - Image 5">
                             </a>
                         </div>
                     </div>
@@ -409,23 +409,23 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/100.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/100.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/100.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/100.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/101.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/101.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/101.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/101.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/102.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/102.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/102.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/102.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/103.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/103.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/103.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/103.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/104.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/104.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/104.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/104.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 5">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/105.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/105.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/105.jpeg') }}" data-lightbox="luxury-hotel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/105.jpeg') }}" loading="lazy" alt="Luxury Hotel Resort - Image 6">
                             </a>
                         </div>
                     </div>
@@ -444,20 +444,20 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/95.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/95.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/95.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/95.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/96.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/96.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/96.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/96.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/97.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/97.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/97.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/97.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/98.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/98.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/98.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/98.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/99.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/99.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/99.jpeg') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/99.jpeg') }}" loading="lazy" alt="Corporate Banking Center - Image 5">
                             </a>
                         </div>
                     </div>
@@ -476,23 +476,23 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/107.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/107.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/107.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/107.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/108.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/108.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/108.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/108.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/109.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/109.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/109.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/109.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/110.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/110.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/110.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/110.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/111.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/111.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/111.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/111.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 5">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/112.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/112.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/112.jpeg') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/112.jpeg') }}" loading="lazy" alt="Medical Health Center - Image 6">
                             </a>
                         </div>
                     </div>
@@ -510,26 +510,26 @@
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/122.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/122.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/122.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/122.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/123.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/123.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/123.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/123.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/124.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/124.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/124.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/124.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/125.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/125.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/125.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/125.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 4">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/126.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/126.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/126.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/126.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 5">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/127.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/127.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/127.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/127.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 6">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/128.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/128.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 7">
+                            <a href="{{ url_for('static', filename='images_optimized/128.jpeg') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/128.jpeg') }}" loading="lazy" alt="Fine Dining Restaurant Complex - Image 7">
                             </a>
                         </div>
                     </div>
@@ -547,23 +547,23 @@
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_1.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_1.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 1">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_1.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_1.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_1.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 1">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_2.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_2.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 2">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_2.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_2.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_2.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 2">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_3.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_3.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 3">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_3.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_3.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_3.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 3">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_4.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_4.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 4">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_4.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_4.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_4.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 4">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_5.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_5.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 5">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_5.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_5.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_5.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 5">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/commercial_educational_institution_6.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/commercial_educational_institution_6.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 6">
+                            <a href="{{ url_for("static", filename="images_optimized/commercial_educational_institution_6.jpeg") }}" data-lightbox="educational-institution-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/commercial_educational_institution_6.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/commercial_educational_institution_6.jpeg") }}" loading="lazy" alt="Educational Institution Building - Image 6">
                             </a>
                         </div>
                     </div>
@@ -582,17 +582,17 @@
                     <div class="portfolio-image">
                         <!-- Image Gallery -->
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for('static', filename='images_compressed/113.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/113.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/113.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/113.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 1">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/114.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/114.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/114.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/114.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 2">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/115.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/115.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/115.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/115.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 3">
                             </a>
-                            <a href="{{ url_for('static', filename='images_compressed/116.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for('static', filename='images_compressed/116.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/116.jpeg') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_optimized/116.jpeg') }}" loading="lazy" alt="Premium Fitness Center - Image 4">
                             </a>
 
                         </div>
@@ -611,20 +611,20 @@
                 <div class="portfolio-item" data-category="commercial">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for("static", filename="images_compressed/117.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/117.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 1">
+                            <a href="{{ url_for("static", filename="images_optimized/117.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/117.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/117.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 1">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/118.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/118.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 2">
+                            <a href="{{ url_for("static", filename="images_optimized/118.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/118.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/118.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 2">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/119.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/119.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 3">
+                            <a href="{{ url_for("static", filename="images_optimized/119.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/119.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/119.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 3">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/120.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/120.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 4">
+                            <a href="{{ url_for("static", filename="images_optimized/120.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/120.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/120.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 4">
                             </a>
-                            <a href="{{ url_for("static", filename="images_compressed/121.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for("static", filename="images_compressed/121.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 5">
+                            <a href="{{ url_for("static", filename="images_optimized/121.jpeg") }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for("static", filename="images_thumbnails/121.jpeg") }}" data-src="{{ url_for("static", filename="images_optimized/121.jpeg") }}" loading="lazy" alt="Automotive Showroom & Service Center - Image 5">
                             </a>
                         </div>
                     </div>

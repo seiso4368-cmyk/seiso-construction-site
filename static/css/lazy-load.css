@@ -1,0 +1,39 @@
+/* Lazy Loading Styles */
+img[data-src] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    min-height: 200px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+img.loaded {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Gallery thumbnail styles */
+.gallery-thumbnail img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery-thumbnail img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
