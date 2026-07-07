@@ -308,4 +308,3 @@ def request_entity_too_large(error):
         'message': f'The uploaded files are too large. Please keep the total upload under {os.getenv("MAX_UPLOAD_MB", "25")} MB.'
     }), 413
 
-
