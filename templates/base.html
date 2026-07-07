@@ -8,8 +8,8 @@
     <title>{% block title %}Seiso Construction - Construction Excellence{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/back-to-top.css") }}">
-    <link rel="stylesheet" href="{{ url_for("static", filename="css/lazy-load.css") }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/back-to-top.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lazy-load.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -96,9 +96,9 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/lightbox.js') }}"></script>
     {% block extra_js %}
-    <script src="{{ url_for("static", filename="js/back-to-top.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/slideshow.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/lazy-load.js") }}"></script>
+    <script src="{{ url_for('static', filename='js/back-to-top.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slideshow.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lazy-load.js') }}"></script>
 {% endblock %} 
 </body>
 </html>
