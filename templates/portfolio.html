@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block title %}Portfolio - Seiso Construction{% endblock %}
 
@@ -396,7 +396,7 @@
                     <div class="portfolio-info">
                         <h3>Medical Health Center</h3>
                         <p class="project-category">Commercial</p>
-                        <p>Modern medical center featuring patient rooms, specialized clinics, surgical suites, diagnostic laboratories, and administrative offices. Price can change depending on the client preference.</p>
+                        <p>Specialized medical facility with outpatient clinics, diagnostic laboratories, treatment rooms, and pharmacy services. Price can change depending on the client preference.</p>
                         <div class="project-details">
                             <span>Budget: $9,500,000</span>
                         </div>
@@ -655,23 +655,23 @@
                 <div class="portfolio-item" data-category="renovation">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/161.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/161.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/161.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 1">
+                            <a href="{{ url_for('static', filename='images_optimized/161.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/161.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/161.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 1">
                             </a>
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/162.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/162.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/162.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 2">
+                            <a href="{{ url_for('static', filename='images_optimized/162.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/162.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/162.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 2">
                             </a>
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/163.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/163.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/163.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 3">
+                            <a href="{{ url_for('static', filename='images_optimized/163.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/163.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/163.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 3">
                             </a>
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/164.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/164.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/164.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 4">
+                            <a href="{{ url_for('static', filename='images_optimized/164.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/164.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/164.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 4">
                             </a>
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/165.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/165.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/165.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 5">
+                            <a href="{{ url_for('static', filename='images_optimized/165.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/165.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/165.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 5">
                             </a>
-                            <a href="{{ url_for(\'static\', filename=\'images_optimized/166.jpeg\') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
-                                <img src="{{ url_for(\'static\', filename=\'images_thumbnails/166.jpeg\') }}" data-src="{{ url_for(\'static\', filename=\'images_optimized/166.jpeg\') }}" loading="lazy" alt="Roof Restoration & Repair - Image 6">
+                            <a href="{{ url_for('static', filename='images_optimized/166.jpeg') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/166.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/166.jpeg') }}" loading="lazy" alt="Roof Restoration & Repair - Image 6">
                             </a>
                         </div>
                     </div>
@@ -685,17 +685,39 @@
                     </div>
                 </div>
 
-
-
-                <!-- Renovation Project 7 -->
-
-
-
-                <!-- Renovation Project 7 -->
-
-
-
-
+                <!-- Renovation Project 6 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/167.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/167.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/167.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/168.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/168.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/168.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/169.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/169.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/169.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/170.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/170.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/170.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/171.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/171.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/171.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/172.jpeg') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/172.jpeg') }}" data-src="{{ url_for('static', filename='images_optimized/172.jpeg') }}" loading="lazy" alt="Interior Painting & Finishing - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Interior Painting & Finishing</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>High-quality interior painting and finishing services featuring premium paints, custom color consultations, and meticulous surface preparation. Transforming spaces with vibrant colors and professional finishes.</p>
+                        <div class="project-details">
+                            <span>Budget: $15,000</span>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Renovation Project 7 -->
                 <div class="portfolio-item" data-category="renovation">
@@ -744,9 +766,7 @@
                     </div>
                 </div>
 
-                
-
-                <!-- Renovation Project 12 -->
+                <!-- Renovation Project 9 -->
                 <div class="portfolio-item" data-category="renovation">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
@@ -765,7 +785,7 @@
                     </div>
                 </div>
 
-                <!-- Renovation Project 12 -->
+                <!-- Renovation Project 10 -->
                 <div class="portfolio-item" data-category="renovation">
                     <div class="portfolio-image">
                         <div class="portfolio-gallery">
