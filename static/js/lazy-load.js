@@ -1,4 +1,4 @@
-// Lazy load images when they come into view
+// Lazy load images with skeleton loading and error handling
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll("img[data-src]");
     
@@ -7,10 +7,31 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    img.classList.add("loaded");
-                    observer.unobserve(img);
+                    const dataSrc = img.dataset.src;
+                    
+                    // Mark as loading
+                    img.classList.add('loading');
+                    
+                    // Create a new image to preload
+                    const tempImg = new Image();
+                    
+                    tempImg.onload = function() {
+                        img.src = dataSrc;
+                        img.removeAttribute('data-src');
+                        img.classList.remove('loading');
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    };
+                    
+                    tempImg.onerror = function() {
+                        // Fallback: use a placeholder or retry
+                        img.classList.remove('loading');
+                        img.classList.add('error');
+                        img.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%23f0f0f0%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3EImage not available%3C/text%3E%3C/svg%3E';
+                        observer.unobserve(img);
+                    };
+                    
+                    tempImg.src = dataSrc;
                 }
             });
         }, {
@@ -21,8 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         // Fallback for older browsers
         images.forEach(img => {
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
+            const tempImg = new Image();
+            tempImg.onload = function() {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                img.classList.add('loaded');
+            };
+            tempImg.onerror = function() {
+                img.classList.add('error');
+            };
+            tempImg.src = img.dataset.src;
         });
     }
 });

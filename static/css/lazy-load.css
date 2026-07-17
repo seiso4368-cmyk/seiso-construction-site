@@ -1,12 +1,23 @@
-/* Lazy Loading Styles */
+/* Lazy Loading Styles with Skeleton Loading */
+
+/* Initial state - skeleton placeholder */
 img[data-src] {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background: linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 20%, #e8e8e8 40%, #e8e8e8 100%);
     background-size: 200% 100%;
-    animation: loading 1.5s infinite;
+    animation: skeleton-loading 2s infinite;
     min-height: 200px;
+    display: block;
 }
 
-@keyframes loading {
+/* Loading state - shimmer effect */
+img.loading {
+    background: linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 20%, #e8e8e8 40%, #e8e8e8 100%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 2s infinite;
+}
+
+/* Skeleton loading animation */
+@keyframes skeleton-loading {
     0% {
         background-position: 200% 0;
     }
@@ -15,13 +26,22 @@ img[data-src] {
     }
 }
 
+/* Loaded state - fade in */
 img.loaded {
-    animation: fadeIn 0.3s ease-in-out;
+    animation: fadeIn 0.4s ease-in-out;
+    background: none;
 }
 
+/* Error state */
+img.error {
+    background: #f5f5f5;
+    animation: none;
+}
+
+/* Fade in animation */
 @keyframes fadeIn {
     from {
-        opacity: 0.8;
+        opacity: 0.7;
     }
     to {
         opacity: 1;
