@@ -723,29 +723,26 @@ body {
 
 /* Portfolio Gallery Styles */
 .portfolio-gallery {
-    display: block;
+    display: flex;
+    gap: 4px;
     margin: 0;
     padding: 0;
     border-top: none;
     width: 100%;
     height: 100%;
-    position: relative;
+    flex-wrap: wrap;
 }
 
 .gallery-thumbnail {
-    display: none;
+    flex: 1;
+    min-width: 60px;
+    display: block;
     overflow: hidden;
     border-radius: 4px;
     cursor: pointer;
     transition: var(--transition);
     border: 1px solid transparent;
     height: 100%;
-    width: 100%;
-}
-
-/* Show only the first thumbnail as the main cover image */
-.gallery-thumbnail:first-child {
-    display: block;
 }
 
 .gallery-thumbnail img {
