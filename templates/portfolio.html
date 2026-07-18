@@ -1,37 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Seiso Construction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-</head>
-<body>
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <a href="{{ url_for('index') }}">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Seiso Construction">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('services') }}">Services</a></li>
-                <li><a href="{{ url_for('portfolio') }}" class="active">Portfolio</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
 
-    <section class="portfolio-hero">
+{% block title %}Portfolio - Seiso Construction{% endblock %}
+
+{% block content %}
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="hero-slideshow">
+            <img src="{{ url_for('static', filename='images_thumbnails/hero-1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hero-1.webp') }}" loading="lazy" alt="Hero Image 1" class="active">
+            <img src="{{ url_for('static', filename='images_thumbnails/hero-2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hero-2.webp') }}" loading="lazy" alt="Hero Image 2">
+            <img src="{{ url_for('static', filename='images_thumbnails/hero-3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hero-3.webp') }}" loading="lazy" alt="Hero Image 3">
+            <img src="{{ url_for('static', filename='images_thumbnails/hero-4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hero-4.webp') }}" loading="lazy" alt="Hero Image 4">
+        </div>
         <div class="container">
             <h1>Our Portfolio</h1>
             <p>Showcasing our completed projects and success stories</p>
         </div>
     </section>
 
+    <!-- Filter Section -->
     <section class="portfolio-filters">
         <div class="container">
             <div class="filter-buttons">
@@ -43,515 +29,922 @@
         </div>
     </section>
 
+    <!-- Portfolio Grid -->
     <section class="portfolio-grid">
         <div class="container">
             <div class="projects-grid">
-        <!-- Residential Projects -->
-        <div class="portfolio-item" data-category="residential">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/1.webp') }}" data-lightbox="residential-1" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/1.webp') }}" loading="lazy" alt="Modern Residential Project - Exterior">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/2.webp') }}" data-lightbox="residential-1" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/2.webp') }}" loading="lazy" alt="Modern Residential Project - Interior">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/3.webp') }}" data-lightbox="residential-1" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/3.webp') }}" loading="lazy" alt="Modern Residential Project - Living Room">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/4.webp') }}" data-lightbox="residential-1" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/4.webp') }}" loading="lazy" alt="Modern Residential Project - Kitchen">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/5.webp') }}" data-lightbox="residential-1" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/5.webp') }}" loading="lazy" alt="Modern Residential Project - Bedroom">
-                    </a>
+                <!-- Project 1 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/28.webp') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/28.webp') }}" data-src="{{ url_for('static', filename='images_optimized/28.webp') }}" loading="lazy" alt="2-Bedroom Modern Home Exterior">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/29.webp') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/29.webp') }}" data-src="{{ url_for('static', filename='images_optimized/29.webp') }}" loading="lazy" alt="2-Bedroom Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/30.webp') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/30.webp') }}" data-src="{{ url_for('static', filename='images_optimized/30.webp') }}" loading="lazy" alt="2-Bedroom Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/31.webp') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/31.webp') }}" data-src="{{ url_for('static', filename='images_optimized/31.webp') }}" loading="lazy" alt="2-Bedroom Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/32.webp') }}" data-lightbox="2bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/32.webp') }}" data-src="{{ url_for('static', filename='images_optimized/32.webp') }}" loading="lazy" alt="2-Bedroom Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Two bedrooms one storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Custom-built 5-bedroom family home featuring modern architecture, sustainable materials, and smart home technology. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $70,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Two bedrooms one storey</h3>
-                <p class="project-category">Residential</p>
-                <p>Custom-built 5-bedroom family home featuring modern architecture, sustainable materials, and smart home technology. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $70,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="residential">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/21.webp') }}" data-lightbox="residential-2" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/21.webp') }}" data-src="{{ url_for('static', filename='images_optimized/21.webp') }}" loading="lazy" alt="Luxury Villa - Main View">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/22.webp') }}" data-lightbox="residential-2" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/22.webp') }}" data-src="{{ url_for('static', filename='images_optimized/22.webp') }}" loading="lazy" alt="Luxury Villa - Pool Area">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/23.webp') }}" data-lightbox="residential-2" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/23.webp') }}" data-src="{{ url_for('static', filename='images_optimized/23.webp') }}" loading="lazy" alt="Luxury Villa - Garden">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/24.webp') }}" data-lightbox="residential-2" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/24.webp') }}" data-src="{{ url_for('static', filename='images_optimized/24.webp') }}" loading="lazy" alt="Luxury Villa - Night View">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/25.webp') }}" data-lightbox="residential-2" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/25.webp') }}" data-src="{{ url_for('static', filename='images_optimized/25.webp') }}" loading="lazy" alt="Luxury Villa - Interior">
-                    </a>
+                <!-- Project 2 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/33.webp') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/33.webp') }}" data-src="{{ url_for('static', filename='images_optimized/33.webp') }}" loading="lazy" alt="2-Bedroom Two Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/34.webp') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/34.webp') }}" data-src="{{ url_for('static', filename='images_optimized/34.webp') }}" loading="lazy" alt="2-Bedroom Two Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/35.webp') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/35.webp') }}" data-src="{{ url_for('static', filename='images_optimized/35.webp') }}" loading="lazy" alt="2-Bedroom Two Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/36.webp') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/36.webp') }}" data-src="{{ url_for('static', filename='images_optimized/36.webp') }}" loading="lazy" alt="2-Bedroom Two Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/37.webp') }}" data-lightbox="2bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/37.webp') }}" data-src="{{ url_for('static', filename='images_optimized/37.webp') }}" loading="lazy" alt="2-Bedroom Two Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Two bedrooms two storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>12-story office building with modern amenities, energy-efficient systems, and eco-friendly design. Price can change depending on the client preference.</p>
+                        <div class="project-details">                            
+                            <span>Budget: $95,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Two bedrooms two storey</h3>
-                <p class="project-category">Residential</p>
-                <p>12-story office building with modern amenities, energy-efficient systems, and eco-friendly design. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $95,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="residential">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/41.webp') }}" data-lightbox="residential-3" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/41.webp') }}" data-src="{{ url_for('static', filename='images_optimized/41.webp') }}" loading="lazy" alt="Apartment Complex - Exterior">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/42.webp') }}" data-lightbox="residential-3" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/42.webp') }}" data-src="{{ url_for('static', filename='images_optimized/42.webp') }}" loading="lazy" alt="Apartment Complex - Courtyard">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/43.webp') }}" data-lightbox="residential-3" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/43.webp') }}" data-src="{{ url_for('static', filename='images_optimized/43.webp') }}" loading="lazy" alt="Apartment Complex - Balcony">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/44.webp') }}" data-lightbox="residential-3" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/44.webp') }}" data-src="{{ url_for('static', filename='images_optimized/44.webp') }}" loading="lazy" alt="Apartment Complex - Lobby">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/45.webp') }}" data-lightbox="residential-3" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/45.webp') }}" data-src="{{ url_for('static', filename='images_optimized/45.webp') }}" loading="lazy" alt="Apartment Complex - Floor Plan">
-                    </a>
+                <!-- Project 3 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/38.webp') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/38.webp') }}" data-src="{{ url_for('static', filename='images_optimized/38.webp') }}" loading="lazy" alt="3-Bedroom Modern Home Exterior">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/39.webp') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/39.webp') }}" data-src="{{ url_for('static', filename='images_optimized/39.webp') }}" loading="lazy" alt="3-Bedroom Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/40.webp') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/40.webp') }}" data-src="{{ url_for('static', filename='images_optimized/40.webp') }}" loading="lazy" alt="3-Bedroom Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/41.webp') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/41.webp') }}" data-src="{{ url_for('static', filename='images_optimized/41.webp') }}" loading="lazy" alt="3-Bedroom Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/42.webp') }}" data-lightbox="3bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/42.webp') }}" data-src="{{ url_for('static', filename='images_optimized/42.webp') }}" loading="lazy" alt="3-Bedroom Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Three bedrooms one storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Complete kitchen and bathroom renovation featuring premium finishes, modern appliances, custom cabinetry, and luxury tile work. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $110,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Three bedrooms one storey</h3>
-                <p class="project-category">Residential</p>
-                <p>Complete kitchen and bathroom renovation featuring premium finishes, modern appliances, custom cabinetry, and luxury tile work. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $110,000</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Commercial Projects -->
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_1.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_1.webp') }}" loading="lazy" alt="Modern Office Complex - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_2.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_2.webp') }}" loading="lazy" alt="Modern Office Complex - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_3.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_3.webp') }}" loading="lazy" alt="Modern Office Complex - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_4.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_4.webp') }}" loading="lazy" alt="Modern Office Complex - Image 4">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_5.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_5.webp') }}" loading="lazy" alt="Modern Office Complex - Image 5">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/office_gallery_6.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/office_gallery_6.webp') }}" data-src="{{ url_for('static', filename='images_optimized/office_gallery_6.webp') }}" loading="lazy" alt="Modern Office Complex - Image 6">
-                    </a>
+                <!-- Project 4 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/43.webp') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/43.webp') }}" data-src="{{ url_for('static', filename='images_optimized/43.webp') }}" loading="lazy" alt="3-Bedroom Two Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/44.webp') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/44.webp') }}" data-src="{{ url_for('static', filename='images_optimized/44.webp') }}" loading="lazy" alt="3-Bedroom Two Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/45.webp') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/45.webp') }}" data-src="{{ url_for('static', filename='images_optimized/45.webp') }}" loading="lazy" alt="3-Bedroom Two Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/46.webp') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/46.webp') }}" data-src="{{ url_for('static', filename='images_optimized/46.webp') }}" loading="lazy" alt="3-Bedroom Two Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/47.webp') }}" data-lightbox="3bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/47.webp') }}" data-src="{{ url_for('static', filename='images_optimized/47.webp') }}" loading="lazy" alt="3-Bedroom Two Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Three bedrooms two storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Development of 15 luxury townhomes featuring premium finishes, integrated smart home technology, and modern architectural design. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $150,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Modern Office Complex</h3>
-                <p class="project-category">Commercial</p>
-                <p>12-story office building with modern amenities, energy-efficient systems, and eco-friendly design. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $12,500,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/94.webp') }}" data-lightbox="retail-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/94.webp') }}" data-src="{{ url_for('static', filename='images_optimized/94.webp') }}" loading="lazy" alt="Retail Shopping Mall - Entrance">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/6.webp') }}" data-lightbox="retail-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/6.webp') }}" data-src="{{ url_for('static', filename='images_optimized/6.webp') }}" loading="lazy" alt="Retail Shopping Mall - Interior">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/7.webp') }}" data-lightbox="retail-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/7.webp') }}" data-src="{{ url_for('static', filename='images_optimized/7.webp') }}" loading="lazy" alt="Retail Shopping Mall - Atrium">
-                    </a>
+                <!-- Project 5 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/48.webp') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/48.webp') }}" data-src="{{ url_for('static', filename='images_optimized/48.webp') }}" loading="lazy" alt="4-Bedroom One Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/49.webp') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/49.webp') }}" data-src="{{ url_for('static', filename='images_optimized/49.webp') }}" loading="lazy" alt="4-Bedroom One Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/50.webp') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/50.webp') }}" data-src="{{ url_for('static', filename='images_optimized/50.webp') }}" loading="lazy" alt="4-Bedroom One Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/51.webp') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/51.webp') }}" data-src="{{ url_for('static', filename='images_optimized/51.webp') }}" loading="lazy" alt="4-Bedroom One Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/52.webp') }}" data-lightbox="4bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/52.webp') }}" data-src="{{ url_for('static', filename='images_optimized/52.webp') }}" loading="lazy" alt="4-Bedroom One Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Four bedrooms one storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Contemporary retail center featuring 32 commercial units, modern parking facilities, common areas, and landscaping. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $180,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Retail Shopping Mall</h3>
-                <p class="project-category">Commercial</p>
-                <p>Contemporary retail center featuring 32 commercial units, modern parking facilities, common areas, and landscaping. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $8,200,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_1.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_1.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Modern Facility">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_2.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_2.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Logistics Layout">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_3.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_3.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - External View">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_4.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_4.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Interior Space">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_5.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_5.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Infrastructure">
-                    </a>
+                <!-- Project 6 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/53.webp') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/53.webp') }}" data-src="{{ url_for('static', filename='images_optimized/53.webp') }}" loading="lazy" alt="4-Bedroom Two Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/54.webp') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/54.webp') }}" data-src="{{ url_for('static', filename='images_optimized/54.webp') }}" loading="lazy" alt="4-Bedroom Two Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/55.webp') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/55.webp') }}" data-src="{{ url_for('static', filename='images_optimized/55.webp') }}" loading="lazy" alt="4-Bedroom Two Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/56.webp') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/56.webp') }}" data-src="{{ url_for('static', filename='images_optimized/56.webp') }}" loading="lazy" alt="4-Bedroom Two Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/57.webp') }}" data-lightbox="4bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/57.webp') }}" data-src="{{ url_for('static', filename='images_optimized/57.webp') }}" loading="lazy" alt="4-Bedroom Two Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Four bedrooms two storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Comprehensive renovation of a 19th-century historic building into a boutique hotel, preserving original features while adding modern luxury amenities. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $220,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Industrial Warehouse Complex</h3>
-                <p class="project-category">Commercial</p>
-                <p>Large-scale industrial facility with advanced logistics systems, loading bays, and climate-controlled storage areas. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $5,800,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_1.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_1.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_2.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_2.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_3.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_3.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_4.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_4.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 4">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_5.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_5.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 5">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_6.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_6.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_6.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 6">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_7.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_7.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_7.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 7">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_8.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_8.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_8.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 8">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_9.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_9.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_9.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 9">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/hotel_gallery_10.webp') }}" data-lightbox="hotel-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/hotel_gallery_10.webp') }}" data-src="{{ url_for('static', filename='images_optimized/hotel_gallery_10.webp') }}" loading="lazy" alt="Luxury Hotel Resort - Image 10">
-                    </a>
+                <!-- Project 7 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/58.webp') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/58.webp') }}" data-src="{{ url_for('static', filename='images_optimized/58.webp') }}" loading="lazy" alt="5-Bedroom One Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/59.webp') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/59.webp') }}" data-src="{{ url_for('static', filename='images_optimized/59.webp') }}" loading="lazy" alt="5-Bedroom One Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/60.webp') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/60.webp') }}" data-src="{{ url_for('static', filename='images_optimized/60.webp') }}" loading="lazy" alt="5-Bedroom One Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/61.webp') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/61.webp') }}" data-src="{{ url_for('static', filename='images_optimized/61.webp') }}" loading="lazy" alt="5-Bedroom One Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/62.webp') }}" data-lightbox="5bedroom1storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/62.webp') }}" data-src="{{ url_for('static', filename='images_optimized/62.webp') }}" loading="lazy" alt="5-Bedroom One Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Five bedrooms one storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>High-end residential development featuring 24 modern apartments with panoramic city views, underground parking, and rooftop terrace. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $250,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Luxury Hotel Resort</h3>
-                <p class="project-category">Commercial</p>
-                <p>High-end resort featuring 120 guest rooms, infinity pool, spa facilities, and fine dining restaurants. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $15,000,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_1.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_1.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_2.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_2.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_3.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_3.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_4.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_4.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 4">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_5.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_5.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 5">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_6.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_6.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_6.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 6">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_7.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_7.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_7.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 7">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/banking_gallery_8.webp') }}" data-lightbox="banking-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/banking_gallery_8.webp') }}" data-src="{{ url_for('static', filename='images_optimized/banking_gallery_8.webp') }}" loading="lazy" alt="Corporate Banking Center - Image 8">
-                    </a>
+                <!-- Project 8 -->
+                <div class="portfolio-item" data-category="residential">
+                    <div class="portfolio-image">
+                        <!-- Image Gallery -->
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/63.webp') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/63.webp') }}" data-src="{{ url_for('static', filename='images_optimized/63.webp') }}" loading="lazy" alt="5-Bedroom Two Storey Modern Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/64.webp') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/64.webp') }}" data-src="{{ url_for('static', filename='images_optimized/64.webp') }}" loading="lazy" alt="5-Bedroom Two Storey Contemporary Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/65.webp') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/65.webp') }}" data-src="{{ url_for('static', filename='images_optimized/65.webp') }}" loading="lazy" alt="5-Bedroom Two Storey Luxury Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/66.webp') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/66.webp') }}" data-src="{{ url_for('static', filename='images_optimized/66.webp') }}" loading="lazy" alt="5-Bedroom Two Storey Minimalist Home">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/67.webp') }}" data-lightbox="5bedroom2storey-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/67.webp') }}" data-src="{{ url_for('static', filename='images_optimized/67.webp') }}" loading="lazy" alt="5-Bedroom Two Storey Elegant Home">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Five bedrooms two storey</h3>
+                        <p class="project-category">Residential</p>
+                        <p>Eco-friendly suburban community featuring 45 sustainable homes with solar energy, water recycling, and community green spaces. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $320,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Corporate Banking Center</h3>
-                <p class="project-category">Commercial</p>
-                <p>Modern banking facility featuring secure vaults, teller stations, private offices, customer lounge, and integrated security systems. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $4,200,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_1.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_1.webp') }}" loading="lazy" alt="Medical Health Center - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_2.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_2.webp') }}" loading="lazy" alt="Medical Health Center - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_3.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_3.webp') }}" loading="lazy" alt="Medical Health Center - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_4.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_4.webp') }}" loading="lazy" alt="Medical Health Center - Image 4">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_5.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_5.webp') }}" loading="lazy" alt="Medical Health Center - Image 5">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_6.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_6.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_6.webp') }}" loading="lazy" alt="Medical Health Center - Image 6">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_7.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_7.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_7.webp') }}" loading="lazy" alt="Medical Health Center - Image 7">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_8.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_8.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_8.webp') }}" loading="lazy" alt="Medical Health Center - Image 8">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_9.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_9.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_9.webp') }}" loading="lazy" alt="Medical Health Center - Image 9">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/medical_gallery_10.webp') }}" data-lightbox="medical-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/medical_gallery_10.webp') }}" data-src="{{ url_for('static', filename='images_optimized/medical_gallery_10.webp') }}" loading="lazy" alt="Medical Health Center - Image 10">
-                    </a>
+                <!-- Commercial Project 1 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/1.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/1.webp') }}" loading="lazy" alt="Modern Office Complex - Exterior Render">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/142.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/142.webp') }}" data-src="{{ url_for('static', filename='images_optimized/142.webp') }}" loading="lazy" alt="Modern Office Complex - Construction Progress">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/17.webp') }}" data-lightbox="office-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/17.webp') }}" data-src="{{ url_for('static', filename='images_optimized/17.webp') }}" loading="lazy" alt="Modern Office Complex - Alternate View">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Modern Office Complex</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>12-story office building with modern amenities, energy-efficient systems, and eco-friendly design. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $12,500,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Medical Health Center</h3>
-                <p class="project-category">Commercial</p>
-                <p>Specialized medical facility with outpatient clinics, diagnostic laboratories, treatment rooms, and pharmacy services. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $9,500,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/111.webp') }}" data-lightbox="restaurant-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/111.webp') }}" data-src="{{ url_for('static', filename='images_optimized/111.webp') }}" loading="lazy" alt="Fine Dining Restaurant - Main View">
-                    </a>
+                <!-- Commercial Project 2 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                    <div class="portfolio-gallery">
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/94.webp" data-thumb="/static/images_thumbnails/94.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/94.webp" alt="Modern Office Complex" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/6.webp" data-thumb="/static/images_thumbnails/6.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/6.webp" alt="Modern Office Complex" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/7.webp" data-thumb="/static/images_thumbnails/7.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/7.webp" alt="Modern Office Complex" class="lazy-load skeleton">
+                        </div>
+                    </div>
+</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Retail Shopping Mall</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Contemporary retail center featuring 32 commercial units, modern parking facilities, common areas, and landscaping. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $8,200,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Fine Dining Restaurant Complex</h3>
-                <p class="project-category">Commercial</p>
-                <p>Upscale restaurant complex featuring multiple dining areas, professional kitchens, outdoor terrace, and custom interior design. Price can change depending on the client preference.</p>
-                <div class="project-details">
-                    <span>Budget: $3,800,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/11.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/11.webp') }}" data-src="{{ url_for('static', filename='images_optimized/11.webp') }}" loading="lazy" alt="Educational Institution - Exterior">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/12.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/12.webp') }}" data-src="{{ url_for('static', filename='images_optimized/12.webp') }}" loading="lazy" alt="Educational Institution - Classroom">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/13.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/13.webp') }}" data-src="{{ url_for('static', filename='images_optimized/13.webp') }}" loading="lazy" alt="Educational Institution - Laboratory">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/14.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/14.webp') }}" data-src="{{ url_for('static', filename='images_optimized/14.webp') }}" loading="lazy" alt="Educational Institution - Office">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/15.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/15.webp') }}" data-src="{{ url_for('static', filename='images_optimized/15.webp') }}" loading="lazy" alt="Educational Institution - Common Area">
-                    </a>
+                <!-- Commercial Project 3 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_1.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_1.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Modern Facility">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_2.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_2.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Logistics Layout">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_3.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_3.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - External View">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_4.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_4.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Interior Space">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/warehouse_gallery_5.webp') }}" data-lightbox="warehouse-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/warehouse_gallery_5.webp') }}" data-src="{{ url_for('static', filename='images_optimized/warehouse_gallery_5.webp') }}" loading="lazy" alt="Industrial Warehouse Complex - Infrastructure">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Industrial Warehouse Complex</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Large-scale industrial facility with advanced logistics systems, loading bays, and climate-controlled storage areas. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $5,800,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Educational Institution Building</h3>
-                <p class="project-category">Commercial</p>
-                <p>Modern educational facility featuring smart classrooms, specialized laboratories, administrative offices, and student common areas. Designed for an optimal learning environment.</p>
-                <div class="project-details">
-                    <span>Budget: $7,500,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/fitness_gallery_1.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/fitness_gallery_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/fitness_gallery_1.webp') }}" loading="lazy" alt="Premium Fitness Center - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/fitness_gallery_2.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/fitness_gallery_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/fitness_gallery_2.webp') }}" loading="lazy" alt="Premium Fitness Center - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/fitness_gallery_3.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/fitness_gallery_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/fitness_gallery_3.webp') }}" loading="lazy" alt="Premium Fitness Center - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/fitness_gallery_4.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/fitness_gallery_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/fitness_gallery_4.webp') }}" loading="lazy" alt="Premium Fitness Center - Image 4">
-                    </a>
+                <!-- Commercial Project 4 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                    <div class="portfolio-gallery">
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/9.webp" data-thumb="/static/images_thumbnails/9.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/9.webp" alt="Industrial Warehouse Complex" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/10.webp" data-thumb="/static/images_thumbnails/10.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/10.webp" alt="Industrial Warehouse Complex" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/11.webp" data-thumb="/static/images_thumbnails/11.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/11.webp" alt="Industrial Warehouse Complex" class="lazy-load skeleton">
+                        </div>
+                    </div>
+</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Luxury Hotel Resort</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>High-end resort featuring 120 guest rooms, infinity pool, spa facilities, and fine dining restaurants. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $15,000,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Premium Fitness Center</h3>
-                <p class="project-category">Commercial</p>
-                <p>State-of-the-art fitness facility featuring Olympic-sized pool, cardio zones, strength training areas, yoga studios, and luxury locker rooms.</p>
-                <div class="project-details">
-                    <span>Budget: $3,200,000</span>
-                </div>
-            </div>
-        </div>
 
-        <div class="portfolio-item" data-category="commercial">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/auto_showroom_4.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_4.webp') }}" loading="lazy" alt="Automotive Showroom - Service Area">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/auto_showroom_3.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_3.webp') }}" loading="lazy" alt="Automotive Showroom - Luxury Garage">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/auto_showroom_2.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_2.webp') }}" loading="lazy" alt="Automotive Showroom - Modern Showroom">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/auto_showroom_1.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_1.webp') }}" loading="lazy" alt="Automotive Showroom - Multi-Level Parking">
-                    </a>
+                <!-- Commercial Project 5 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                    <div class="portfolio-gallery">
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/100.webp" data-thumb="/static/images_thumbnails/100.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/100.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/101.webp" data-thumb="/static/images_thumbnails/101.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/101.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/102.webp" data-thumb="/static/images_thumbnails/102.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/102.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/103.webp" data-thumb="/static/images_thumbnails/103.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/103.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/104.webp" data-thumb="/static/images_thumbnails/104.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/104.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/105.webp" data-thumb="/static/images_thumbnails/105.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/105.webp" alt="Luxury Hotel Resort" class="lazy-load skeleton">
+                        </div>
+                    </div>
+</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Corporate Banking Center</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Modern banking facility featuring secure vaults, teller stations, private offices, customer lounge, and integrated security systems. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $4,200,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Automotive Showroom & Service Center</h3>
-                <p class="project-category">Commercial</p>
-                <p>Modern automotive facility featuring spacious showroom, service bays, customer lounge, and parts warehouse. Designed with contemporary aesthetics and functional layout.</p>
-                <div class="project-details">
-                    <span>Budget: $2,600,000</span>
-                </div>
-            </div>
-        </div>
 
-        <!-- Renovation Projects -->
-        <div class="portfolio-item" data-category="renovation">
-            <div class="portfolio-image">
-                <div class="portfolio-gallery">
-                    <a href="{{ url_for('static', filename='images_optimized/129.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/129.webp') }}" data-src="{{ url_for('static', filename='images_optimized/129.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 1">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/130.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/130.webp') }}" data-src="{{ url_for('static', filename='images_optimized/130.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 2">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/131.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/131.webp') }}" data-src="{{ url_for('static', filename='images_optimized/131.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 3">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/132.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/132.webp') }}" data-src="{{ url_for('static', filename='images_optimized/132.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 4">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/133.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/133.webp') }}" data-src="{{ url_for('static', filename='images_optimized/133.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 5">
-                    </a>
-                    <a href="{{ url_for('static', filename='images_optimized/134.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
-                        <img src="{{ url_for('static', filename='images_thumbnails/134.webp') }}" data-src="{{ url_for('static', filename='images_optimized/134.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 6">
-                    </a>
+                <!-- Commercial Project 6 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                    <div class="portfolio-gallery">
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/93.webp" data-thumb="/static/images_thumbnails/93.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/93.webp" alt="Corporate Banking Center" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/90.webp" data-thumb="/static/images_thumbnails/90.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/90.webp" alt="Corporate Banking Center" class="lazy-load skeleton">
+                        </div>
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/91.webp" data-thumb="/static/images_thumbnails/91.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/91.webp" alt="Corporate Banking Center" class="lazy-load skeleton">
+                        </div>
+                    </div>
+</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Medical Health Center</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Specialized medical facility with outpatient clinics, diagnostic laboratories, treatment rooms, and pharmacy services. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $9,500,000</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-info">
-                <h3>Complete Kitchen Renovation</h3>
-                <p class="project-category">Renovation</p>
-                <p>Modern kitchen transformation featuring custom cabinetry, quartz countertops, high-end appliances, and open-concept layout.</p>
-                <div class="project-details">
-                    <span>Budget: $45,000</span>
+
+                <!-- Commercial Project 7 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                    <div class="portfolio-gallery">
+                        <div class="gallery-thumbnail" data-full="/static/images_optimized/111.webp" data-thumb="/static/images_thumbnails/111.webp">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="/static/images_thumbnails/111.webp" alt="Medical Health Center" class="lazy-load skeleton">
+                        </div>
+                    </div>
+</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Fine Dining Restaurant Complex</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Upscale restaurant complex featuring multiple dining areas, professional kitchens, outdoor terrace, and custom interior design. Price can change depending on the client preference.</p>
+                        <div class="project-details">
+                            <span>Budget: $3,800,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Project 8 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/11.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/11.webp') }}" data-src="{{ url_for('static', filename='images_optimized/11.webp') }}" loading="lazy" alt="Educational Institution - Exterior">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/12.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/12.webp') }}" data-src="{{ url_for('static', filename='images_optimized/12.webp') }}" loading="lazy" alt="Educational Institution - Classroom">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/13.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/13.webp') }}" data-src="{{ url_for('static', filename='images_optimized/13.webp') }}" loading="lazy" alt="Educational Institution - Laboratory">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/14.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/14.webp') }}" data-src="{{ url_for('static', filename='images_optimized/14.webp') }}" loading="lazy" alt="Educational Institution - Office">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/15.webp') }}" data-lightbox="education-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/15.webp') }}" data-src="{{ url_for('static', filename='images_optimized/15.webp') }}" loading="lazy" alt="Educational Institution - Common Area">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Educational Institution Building</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Modern educational facility featuring smart classrooms, specialized laboratories, administrative offices, and student common areas. Designed for an optimal learning environment.</p>
+                        <div class="project-details">
+                            <span>Budget: $7,500,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Project 9 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/16.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/16.webp') }}" data-src="{{ url_for('static', filename='images_optimized/16.webp') }}" loading="lazy" alt="Fitness Center - Reception">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/17.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/17.webp') }}" data-src="{{ url_for('static', filename='images_optimized/17.webp') }}" loading="lazy" alt="Fitness Center - Gym Floor">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/18.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/18.webp') }}" data-src="{{ url_for('static', filename='images_optimized/18.webp') }}" loading="lazy" alt="Fitness Center - Pool">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/19.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/19.webp') }}" data-src="{{ url_for('static', filename='images_optimized/19.webp') }}" loading="lazy" alt="Fitness Center - Yoga Studio">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/20.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/20.webp') }}" data-src="{{ url_for('static', filename='images_optimized/20.webp') }}" loading="lazy" alt="Fitness Center - Locker Room">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/21.webp') }}" data-lightbox="fitness-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/21.webp') }}" data-src="{{ url_for('static', filename='images_optimized/21.webp') }}" loading="lazy" alt="Fitness Center - Spa Area">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Premium Fitness Center</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>State-of-the-art fitness facility featuring Olympic-sized pool, cardio zones, strength training areas, yoga studios, and luxury locker rooms.</p>
+                        <div class="project-details">
+                            <span>Budget: $3,200,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial Project 10 -->
+                <div class="portfolio-item" data-category="commercial">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/auto_showroom_4.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_4.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_4.webp') }}" loading="lazy" alt="Automotive Showroom - Service Area">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/auto_showroom_3.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_3.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_3.webp') }}" loading="lazy" alt="Automotive Showroom - Luxury Garage">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/auto_showroom_2.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_2.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_2.webp') }}" loading="lazy" alt="Automotive Showroom - Modern Showroom">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/auto_showroom_1.webp') }}" data-lightbox="automotive-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/auto_showroom_1.webp') }}" data-src="{{ url_for('static', filename='images_optimized/auto_showroom_1.webp') }}" loading="lazy" alt="Automotive Showroom - Multi-Level Parking">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Automotive Showroom & Service Center</h3>
+                        <p class="project-category">Commercial</p>
+                        <p>Modern automotive facility featuring spacious showroom, service bays, customer lounge, and parts warehouse. Designed with contemporary aesthetics and functional layout.</p>
+                        <div class="project-details">
+                            <span>Budget: $2,600,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 1 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/129.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/129.webp') }}" data-src="{{ url_for('static', filename='images_optimized/129.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/130.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/130.webp') }}" data-src="{{ url_for('static', filename='images_optimized/130.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/131.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/131.webp') }}" data-src="{{ url_for('static', filename='images_optimized/131.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/132.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/132.webp') }}" data-src="{{ url_for('static', filename='images_optimized/132.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/133.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/133.webp') }}" data-src="{{ url_for('static', filename='images_optimized/133.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/134.webp') }}" data-lightbox="kitchen-renovation-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/134.webp') }}" data-src="{{ url_for('static', filename='images_optimized/134.webp') }}" loading="lazy" alt="Complete Kitchen Renovation - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Complete Kitchen Renovation</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Full kitchen transformation featuring custom cabinetry, premium countertops, modern appliances, and elegant backsplash. Includes updated plumbing and electrical systems with contemporary design.</p>
+                        <div class="project-details">
+                            <span>Budget: $45,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 2 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/135.webp') }}" data-lightbox="bathroom-remodel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/135.webp') }}" data-src="{{ url_for('static', filename='images_optimized/135.webp') }}" loading="lazy" alt="Luxury Bathroom Remodel - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/136.webp') }}" data-lightbox="bathroom-remodel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/136.webp') }}" data-src="{{ url_for('static', filename='images_optimized/136.webp') }}" loading="lazy" alt="Luxury Bathroom Remodel - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/137.webp') }}" data-lightbox="bathroom-remodel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/137.webp') }}" data-src="{{ url_for('static', filename='images_optimized/137.webp') }}" loading="lazy" alt="Luxury Bathroom Remodel - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/138.webp') }}" data-lightbox="bathroom-remodel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/138.webp') }}" data-src="{{ url_for('static', filename='images_optimized/138.webp') }}" loading="lazy" alt="Luxury Bathroom Remodel - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/139.webp') }}" data-lightbox="bathroom-remodel-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/139.webp') }}" data-src="{{ url_for('static', filename='images_optimized/139.webp') }}" loading="lazy" alt="Luxury Bathroom Remodel - Image 5">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Luxury Bathroom Remodel</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Spa-inspired bathroom renovation featuring marble tiles, heated floors, rainfall showerhead, freestanding bathtub, and ambient lighting. Includes waterproofing and ventilation upgrades.</p>
+                        <div class="project-details">
+                            <span>Budget: $38,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 3 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/140.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/140.webp') }}" data-src="{{ url_for('static', filename='images_optimized/140.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/141.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/141.webp') }}" data-src="{{ url_for('static', filename='images_optimized/141.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/142.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/142.webp') }}" data-src="{{ url_for('static', filename='images_optimized/142.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/143.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/143.webp') }}" data-src="{{ url_for('static', filename='images_optimized/143.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/144.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/144.webp') }}" data-src="{{ url_for('static', filename='images_optimized/144.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/145.webp') }}" data-lightbox="window-door-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/145.webp') }}" data-src="{{ url_for('static', filename='images_optimized/145.webp') }}" loading="lazy" alt="Window & Door Replacement - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Window & Door Replacement</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Complete window and door replacement project featuring energy-efficient glass, modern frames, and improved insulation. Includes installation of new entry doors and sliding glass doors.</p>
+                        <div class="project-details">
+                            <span>Budget: $28,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 4 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/156.webp') }}" data-lightbox="living-room-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/156.webp') }}" data-src="{{ url_for('static', filename='images_optimized/156.webp') }}" loading="lazy" alt="Living Room Transformation - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/157.webp') }}" data-lightbox="living-room-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/157.webp') }}" data-src="{{ url_for('static', filename='images_optimized/157.webp') }}" loading="lazy" alt="Living Room Transformation - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/158.webp') }}" data-lightbox="living-room-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/158.webp') }}" data-src="{{ url_for('static', filename='images_optimized/158.webp') }}" loading="lazy" alt="Living Room Transformation - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/159.webp') }}" data-lightbox="living-room-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/159.webp') }}" data-src="{{ url_for('static', filename='images_optimized/159.webp') }}" loading="lazy" alt="Living Room Transformation - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/160.webp') }}" data-lightbox="living-room-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/160.webp') }}" data-src="{{ url_for('static', filename='images_optimized/160.webp') }}" loading="lazy" alt="Living Room Transformation - Image 5">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Living Room Transformation</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Complete living room renovation featuring new flooring, accent walls, custom shelving, updated lighting, and entertainment system integration. Designed for modern comfort and style.</p>
+                        <div class="project-details">
+                            <span>Budget: $32,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 5 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/161.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/161.webp') }}" data-src="{{ url_for('static', filename='images_optimized/161.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/162.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/162.webp') }}" data-src="{{ url_for('static', filename='images_optimized/162.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/163.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/163.webp') }}" data-src="{{ url_for('static', filename='images_optimized/163.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/164.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/164.webp') }}" data-src="{{ url_for('static', filename='images_optimized/164.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/165.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/165.webp') }}" data-src="{{ url_for('static', filename='images_optimized/165.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/166.webp') }}" data-lightbox="roof-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/166.webp') }}" data-src="{{ url_for('static', filename='images_optimized/166.webp') }}" loading="lazy" alt="Roof Restoration & Repair - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Roof Restoration & Repair</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Comprehensive roof restoration and repair services, including leak detection, shingle replacement, flashing repair, and gutter installation. Ensuring long-lasting protection and curb appeal.</p>
+                        <div class="project-details">
+                            <span>Budget: $22,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 6 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/167.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/167.webp') }}" data-src="{{ url_for('static', filename='images_optimized/167.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/168.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/168.webp') }}" data-src="{{ url_for('static', filename='images_optimized/168.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/169.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/169.webp') }}" data-src="{{ url_for('static', filename='images_optimized/169.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/170.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/170.webp') }}" data-src="{{ url_for('static', filename='images_optimized/170.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/171.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/171.webp') }}" data-src="{{ url_for('static', filename='images_optimized/171.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/172.webp') }}" data-lightbox="painting-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/172.webp') }}" data-src="{{ url_for('static', filename='images_optimized/172.webp') }}" loading="lazy" alt="Interior Painting & Finishing - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Interior Painting & Finishing</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>High-quality interior painting and finishing services featuring premium paints, custom color consultations, and meticulous surface preparation. Transforming spaces with vibrant colors and professional finishes.</p>
+                        <div class="project-details">
+                            <span>Budget: $15,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 7 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/173.webp') }}" data-lightbox="electrical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/173.webp') }}" data-src="{{ url_for('static', filename='images_optimized/173.webp') }}" loading="lazy" alt="Electrical System Upgrade - Components">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/174.webp') }}" data-lightbox="electrical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/174.webp') }}" data-src="{{ url_for('static', filename='images_optimized/174.webp') }}" loading="lazy" alt="Electrical System Upgrade - Control Panel">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/175.webp') }}" data-lightbox="electrical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/175.webp') }}" data-src="{{ url_for('static', filename='images_optimized/175.webp') }}" loading="lazy" alt="Electrical System Upgrade - Modern Ceiling Lighting">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/176.webp') }}" data-lightbox="electrical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/176.webp') }}" data-src="{{ url_for('static', filename='images_optimized/176.webp') }}" loading="lazy" alt="Electrical System Upgrade - Outdoor Wall Lighting">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/177.webp') }}" data-lightbox="electrical-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/177.webp') }}" data-src="{{ url_for('static', filename='images_optimized/177.webp') }}" loading="lazy" alt="Electrical System Upgrade - Accent Wall Lighting">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Electrical System Upgrade</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Complete electrical system modernization featuring updated wiring, new circuit breakers, additional outlets, smart home integration, and energy-efficient lighting throughout.</p>
+                        <div class="project-details">
+                            <span>Budget: $35,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 8 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/152.webp') }}" data-lightbox="hvac-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/152.webp') }}" data-src="{{ url_for('static', filename='images_optimized/152.webp') }}" loading="lazy" alt="HVAC System Installation - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/153.webp') }}" data-lightbox="hvac-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/153.webp') }}" data-src="{{ url_for('static', filename='images_optimized/153.webp') }}" loading="lazy" alt="HVAC System Installation - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/154.webp') }}" data-lightbox="hvac-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/154.webp') }}" data-src="{{ url_for('static', filename='images_optimized/154.webp') }}" loading="lazy" alt="HVAC System Installation - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/155.webp') }}" data-lightbox="hvac-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/155.webp') }}" data-src="{{ url_for('static', filename='images_optimized/155.webp') }}" loading="lazy" alt="HVAC System Installation - Image 4">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>HVAC System Installation</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Modern HVAC system installation featuring energy-efficient units, smart thermostats, improved ductwork, and zoned temperature control. Includes professional maintenance plan.</p>
+                        <div class="project-details">
+                            <span>Budget: $42,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 9 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/178.webp') }}" data-lightbox="master-bedroom-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/178.webp') }}" data-src="{{ url_for('static', filename='images_optimized/178.webp') }}" loading="lazy" alt="Master Bedroom Suite Renovation - Image 1">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Master Bedroom Suite Renovation</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Luxurious master bedroom renovation featuring custom closets, ensuite bathroom upgrade, ambient lighting, soundproofing, and premium finishes for ultimate comfort.</p>
+                        <div class="project-details">
+                            <span>Budget: $48,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Renovation Project 10 -->
+                <div class="portfolio-item" data-category="renovation">
+                    <div class="portfolio-image">
+                        <div class="portfolio-gallery">
+                            <a href="{{ url_for('static', filename='images_optimized/146.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/146.webp') }}" data-src="{{ url_for('static', filename='images_optimized/146.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 1">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/147.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/147.webp') }}" data-src="{{ url_for('static', filename='images_optimized/147.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 2">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/148.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/148.webp') }}" data-src="{{ url_for('static', filename='images_optimized/148.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 3">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/149.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/149.webp') }}" data-src="{{ url_for('static', filename='images_optimized/149.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 4">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/150.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/150.webp') }}" data-src="{{ url_for('static', filename='images_optimized/150.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 5">
+                            </a>
+                            <a href="{{ url_for('static', filename='images_optimized/151.webp') }}" data-lightbox="patio-gallery" class="gallery-thumbnail">
+                                <img src="{{ url_for('static', filename='images_thumbnails/151.webp') }}" data-src="{{ url_for('static', filename='images_optimized/151.webp') }}" loading="lazy" alt="Outdoor Patio & Landscaping - Image 6">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Outdoor Patio & Landscaping</h3>
+                        <p class="project-category">Renovations</p>
+                        <p>Complete outdoor renovation featuring new patio, hardscaping, landscape design, outdoor kitchen, lighting, and irrigation systems. Designed for entertaining and relaxation.</p>
+                        <div class="project-details">
+                            <span>Budget: $52,000</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Stats Section -->
+    <section class="stats-section">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Seiso Construction">
-                    <p>Building Excellence, Delivering Quality</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>180+</h3>
+                    <p>Projects Completed</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="{{ url_for('index') }}">Home</a></li>
-                        <li><a href="{{ url_for('services') }}">Services</a></li>
-                        <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
-                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-                    </ul>
+                <div class="stat-card">
+                    <h3>20+</h3>
+                    <p>Years Experience</p>
                 </div>
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone"></i> +254 700 000 000</p>
-                    <p><i class="fas fa-envelope"></i> info@seisoconstruction.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                <div class="stat-card">
+                    <h3>98%</h3>
+                    <p>Client Satisfaction</p>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Seiso Construction & Properties Limited. All rights reserved.</p>
+                <div class="stat-card">
+                    <h3>$75M+</h3>
+                    <p>Total Project Value</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Portfolio filtering
-            $('.filter-btn').click(function() {
-                const filter = $(this).attr('data-filter');
-                $('.filter-btn').removeClass('active');
-                $(this).addClass('active');
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Seiso Construction exceeded our expectations. They delivered our project on time and within budget while maintaining exceptional quality throughout."</p>
+                    <p class="testimonial-author">- Eric Ansong, Homeowner</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Professional, reliable, and detail-oriented. Their team managed our commercial project flawlessly. We'd recommend them without hesitation."</p>
+                    <p class="testimonial-author">- Danquah Jeremiah, Business Owner</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The renovation transformed our home. The attention to detail and craftsmanship was outstanding. Seiso Construction is our first choice for any future projects."</p>
+                    <p class="testimonial-author">- Ibrahim Sunday, Property Owner</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                if (filter === 'all') {
-                    $('.portfolio-item').fadeIn();
-                } else {
-                    $('.portfolio-item').hide();
-                    $(`.portfolio-item[data-category="${filter}"]`).fadeIn();
-                }
-            });
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Impressed by Our Work?</h2>
+            <p>Let's build something amazing together</p>
+            <a href="/contact" class="cta-button">Start Your Project</a>
+        </div>
+    </section>
+{% endblock %}
 
-            // Lazy loading
-            const images = document.querySelectorAll('.lazy-load');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.remove('skeleton');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-            images.forEach(img => observer.observe(img));
-        });
-    </script>
-</body>
-</html>
+{% block extra_js %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/portfolio.js') }}"></script>
+{% endblock %}
