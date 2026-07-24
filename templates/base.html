@@ -6,11 +6,12 @@
     <meta name="description" content="Seiso Construction - Professional construction and property management services in Accra, Ghana. Residential, commercial, and renovation projects.">
     <meta name="keywords" content="construction, property management, residential, commercial, renovation, Accra, Ghana">
     <title>{% block title %}Seiso Construction - Construction Excellence{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/back-to-top.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lazy-load.min.css') }}">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     {% block extra_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/back-to-top.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lazy-load.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -94,12 +95,12 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/lightbox.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lightbox.min.js') }}"></script>
     {% block extra_js %}
-    <script src="{{ url_for('static', filename='js/back-to-top.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/slideshow.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/lazy-load.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/back-to-top.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/slideshow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lazy-load.min.js') }}"></script>
 {% endblock %} 
 </body>
 </html>
