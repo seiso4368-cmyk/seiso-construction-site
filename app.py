@@ -104,6 +104,33 @@ def send_resend_email(payload):
         raise ResendAPIError(f'Resend network error: {network_error}') from network_error
 
 
+# Cache control decorator for static assets
+def cache_static(max_age=31536000):  # 1 year for static assets
+    def decorator(f):
+        def decorated_function(*args, **kwargs):
+            response = make_response(f(*args, **kwargs))
+            response.cache_control.max_age = max_age
+            response.cache_control.public = True
+            return response
+        decorated_function.__name__ = f.__name__
+        return decorated_function
+    return decorator
+
+# Add cache headers to all responses
+@app.after_request
+def add_cache_headers(response):
+    if request.path.startswith('/static/'):
+        # Cache static assets for 1 year
+        response.cache_control.max_age = 31536000
+        response.cache_control.public = True
+        response.add_etag()
+    else:
+        # Don't cache HTML pages
+        response.cache_control.no_cache = True
+        response.cache_control.no_store = True
+        response.cache_control.must_revalidate = True
+    return response
+
 # Routes
 @app.route('/')
 def home():
