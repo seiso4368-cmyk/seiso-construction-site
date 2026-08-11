@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 from werkzeug.utils import secure_filename
 from urllib import request as urlrequest
 from urllib import error as urlerror
@@ -18,6 +18,23 @@ DEFAULT_CONTACT_EMAIL = os.getenv('SEISO_CONTACT_EMAIL', 'seiso4368@gmail.com')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your-secret-key-here')
+
+
+def is_secure_request():
+    """Recognise HTTPS correctly when the app runs behind LiteSpeed or a proxy."""
+    forwarded_proto = request.headers.get('X-Forwarded-Proto', '').split(',')[0].strip().lower()
+    return (
+        request.is_secure
+        or request.environ.get('HTTPS', '').lower() in {'on', '1', 'true'}
+        or forwarded_proto == 'https'
+    )
+
+
+@app.before_request
+def enforce_https():
+    """Send all public traffic to the encrypted version of the website."""
+    if not is_secure_request():
+        return redirect(request.url.replace('http://', 'https://', 1), code=301)
 
 # Upload / email attachment limits. Resend allows up to 40 MB per email after
 # Base64 encoding, so this keeps form submissions safely below that ceiling.
@@ -116,7 +133,7 @@ def cache_static(max_age=31536000):  # 1 year for static assets
         return decorated_function
     return decorator
 
-# Add cache headers to all responses
+# Add cache and browser security headers to all responses
 @app.after_request
 def add_cache_headers(response):
     if request.path.startswith('/static/'):
@@ -129,6 +146,12 @@ def add_cache_headers(response):
         response.cache_control.no_cache = True
         response.cache_control.no_store = True
         response.cache_control.must_revalidate = True
+    response.headers.setdefault('X-Content-Type-Options', 'nosniff')
+    response.headers.setdefault('X-Frame-Options', 'SAMEORIGIN')
+    response.headers.setdefault('Referrer-Policy', 'strict-origin-when-cross-origin')
+    response.headers.setdefault('Permissions-Policy', 'geolocation=(), microphone=(), camera=()')
+    if is_secure_request():
+        response.headers.setdefault('Strict-Transport-Security', 'max-age=31536000')
     return response
 
 # Routes
