@@ -91,7 +91,7 @@ Visit `http://localhost:5000` in your browser.
 1. Verify the SMTP username and app password are correct.
 2. Confirm `MAIL_RECIPIENT` is set to the address where consultation requests should be delivered.
 3. Keep uploads within the configured attachment limits. Many email providers reject large video attachments; if that happens, reduce `MAX_UPLOAD_MB`, `MAX_FILE_SIZE_MB`, or request smaller videos.
-4. Review Railway logs for error messages.
+4. Review the StormerHost application logs for error messages.
 
 ### 404 Errors on Routes
 
