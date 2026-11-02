@@ -51,8 +51,7 @@ ALLOWED_EXTENSIONS = {
 }
 
 # Resend HTTPS Email API configuration. This avoids SMTP ports entirely, which
-# is important because Railway is currently unable to reach Gmail SMTP from the
-# production container.
+# avoids relying on SMTP ports and works on standard Python hosting environments.
 RESEND_API_URL = os.getenv('RESEND_API_URL', 'https://api.resend.com/emails')
 RESEND_API_KEY = os.getenv('RESEND_API_KEY')
 RESEND_FROM = os.getenv('RESEND_FROM')
@@ -99,9 +98,7 @@ def send_resend_email(payload):
         'Authorization': f'Bearer {RESEND_API_KEY}',
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        # Railway reached Resend but received a 403 body of "error code: 1010".
-        # Use an explicit application User-Agent instead of urllib's default
-        # Python user agent to avoid edge/WAF rejection of generic clients.
+        # Use an explicit application User-Agent to avoid edge/WAF rejection of generic clients.
         'User-Agent': 'SeisoConstructionWebsite/1.0 (+https://seisoconstruction.com)',
     }
     req = urlrequest.Request(RESEND_API_URL, data=body, headers=headers, method='POST')
@@ -234,13 +231,13 @@ def submit_contact():
         if not RESEND_RECIPIENT:
             return jsonify({
                 'success': False,
-                'message': 'Email recipient is not configured. Please set RESEND_RECIPIENT or MAIL_RECIPIENT in Railway Variables, then redeploy.'
+                'message': 'Email recipient is not configured. Please set RESEND_RECIPIENT or MAIL_RECIPIENT in the hosting environment, then restart the application.'
             }), 500
 
         if not RESEND_API_KEY:
             return jsonify({
                 'success': False,
-                'message': 'Resend API key is not configured. Please set RESEND_API_KEY in Railway Variables, then redeploy.'
+                'message': 'Resend API key is not configured. Please set RESEND_API_KEY in the hosting environment, then restart the application.'
             }), 500
 
         if not RESEND_FROM:
