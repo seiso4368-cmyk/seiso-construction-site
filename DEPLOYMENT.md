@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a Flask-based construction company website with email contact functionality. The site is configured for deployment on Railway.app.
+This is a Flask-based construction company website with email contact functionality. The site is configured for deployment on a standard Python host such as StormerHost.
 
 ## Features
 
@@ -16,7 +16,7 @@ This is a Flask-based construction company website with email contact functional
 
 - Python 3.8+
 - Git
-- Railway.app account (https://railway.app)
+- StormerHost account with Python/Flask hosting, SSH, Git, or FTP access
 - Gmail account with App Password
 
 ## Local Development
@@ -71,50 +71,18 @@ python app.py
 
 Visit `http://localhost:5000` in your browser.
 
-## Deployment to Railway.app
+## Deployment to StormerHost
 
-### 1. Push to GitHub
+1. Pull or upload the latest `main` branch from GitHub to the StormerHost application directory.
+2. Configure the application to run with the project `Procfile` command:
 
-```bash
-git add .
-git commit -m "Initial commit with email functionality"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-```
+   ```bash
+   gunicorn app:app
+   ```
 
-### 2. Deploy on Railway.app
-
-1. Go to [Railway.app](https://railway.app)
-2. Click "New Project"
-3. Select "Deploy from GitHub"
-4. Choose your repository
-5. Railway will automatically detect the Flask app
-
-### 3. Configure Environment Variables on Railway
-
-In your Railway project dashboard:
-
-1. Go to "Variables"
-2. Add the following variables:
-   - `MAIL_SERVER`: SMTP host, such as `smtp.gmail.com`
-   - `MAIL_PORT`: SMTP port, usually `587`
-   - `MAIL_USE_TLS`: usually `true`
-   - `MAIL_USE_SSL`: usually `false`
-   - `MAIL_USERNAME`: sender email address or SMTP username
-   - `MAIL_PASSWORD`: sender app password or SMTP password
-   - `MAIL_DEFAULT_SENDER`: email address shown as the sender
-   - `MAIL_RECIPIENT`: email address that should receive consultation bookings and uploaded files
-   - `MAX_UPLOAD_MB`: total upload limit per booking, default `25`
-   - `MAX_FILE_SIZE_MB`: per-file upload limit, default `10`
-   - `MAX_FILE_COUNT`: number of files allowed per booking, default `5`
-   - `SECRET_KEY`: your-secret-key
-
-**Important**: Do NOT commit `.env` file to GitHub. It's already in `.gitignore`.
-
-### 4. Deploy
-
-Railway will automatically deploy when you push to the main branch.
+3. Configure the required environment variables in the StormerHost hosting panel or server environment. Keep secrets such as `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_RECIPIENT`, and `SECRET_KEY` out of GitHub.
+4. Point `seisoconstruction.com` to the StormerHost application and restart the Python/Gunicorn service.
+5. Confirm that the live site is serving the latest GitHub commit before testing the contact form.
 
 ## Troubleshooting
 
@@ -131,7 +99,7 @@ Ensure all template files are in the `templates/` directory and static files are
 
 ### Port Issues
 
-Railway automatically assigns a port. The app reads from the `PORT` environment variable.
+The hosting provider should expose its assigned port through the `PORT` environment variable.
 
 ## File Structure
 
@@ -140,7 +108,6 @@ construction-company-site/
 ├── app.py                 # Main Flask application
 ├── requirements.txt       # Python dependencies
 ├── Procfile              # Process file for deployment
-├── railway.json          # Railway.app configuration
 ├── .env                  # Environment variables (local only)
 ├── .gitignore            # Git ignore rules
 ├── templates/            # HTML templates
